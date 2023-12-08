@@ -1,0 +1,85 @@
+/* EmployerProfile.css - Updated to match EmployerProfileManagement.css styles */
+
+/* General container for the form */
+.employer-profile-container {
+    background-color: #333; /* Darker container background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* More pronounced shadow for depth */
+    padding: 40px; /* Padding inside the container */
+    margin: 40px auto; /* Center the container with automatic margins */
+    max-width: 800px;
+  }
+  
+  /* Styles the form heading */
+  .employer-profile-container h1 {
+      color: #333;
+      margin-bottom: 2rem;
+      font-weight: 300; /* Assuming a lighter font-weight is used in EmployerProfileManagement.css */
+  }
+  
+  /* Styles the Formik form */
+  .employer-creation-profile-form .form-field {
+      background-color: #555; /* Dark background for input fields */
+      border: 1px solid #666; /* Slightly lighter border color */
+      color: #ddd; /* Light text color for input content */
+      padding: 12px 20px; /* Padding inside the form fields */
+      border-radius: 5px; /* Rounded corners for form fields */
+      margin-bottom: 20px; /* Margin below each field */
+    }
+  /* Styles for the input fields and textarea */
+  input[type="text"],
+  textarea {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 4px; /* Assuming border-radius from EmployerProfileManagement.css */
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      width: 100%; /* Ensures full width inside the container */
+      box-sizing: border-box; /* Ensures padding doesn't add to width */
+  }
+  
+  /* Textarea specific styles */
+  textarea {
+      resize: vertical;
+      min-height: 150px;
+  }
+  
+  /* Styles for the error messages */
+  .error-message {
+      color: #d9534f;
+      font-size: 0.875rem;
+      margin-top: -0.5rem;
+      margin-bottom: 1rem;
+  }
+  
+  /* Styles for the submit button */
+  button[type="submit"] {
+      padding: 1rem 2rem;
+      background-color: #5cb85c; /* Background color from EmployerProfileManagement.css */
+      color: white;
+      border: none;
+      border-radius: 4px; /* Border-radius from EmployerProfileManagement.css */
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s;
+  }
+  
+  /* Hover and focus styles for the submit button */
+  button[type="submit"]:hover,
+  button[type="submit"]:focus {
+      background-color: #4cae4c; /* Darker shade for hover effect */
+  }
+  
+  /* Styles for when the form is submitting */
+  button[type="submit"]:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+  }
+  
+  /* If additional messaging is needed post-submission */
+  .submission-message {
+      color: #5cb85c; /* Success color from EmployerProfileManagement.css */
+      font-size: 1rem;
+      margin-top: 2rem;
+  }

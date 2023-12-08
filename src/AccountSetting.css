@@ -1,0 +1,119 @@
+/* AccountSettings.css */
+.account-settings-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px; /* Adjust the width as needed */
+    width: 100%;
+    margin: 2rem auto;
+    padding: 2rem;
+    box-sizing: border-box;
+    background: #343a40; /* Dark background for the form */
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  h1 {
+    font-size: 2.25rem;
+    color: #fff; /* White color for the title */
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 300;
+  }
+  
+  .label-field-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-size: 1rem;
+    color: #fff; /* White color for labels */
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  select {
+    padding: 0.75rem 1rem;
+    border: 2px solid #495057; /* Grey border for inputs */
+    background: #23272b; /* Slightly lighter dark background for inputs */
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #fff; /* White text for input content */
+    transition: border-color 0.3s;
+  }
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  select:focus {
+    border-color: #007bff; /* Blue border for focus */
+    outline: none;
+  }
+  
+  button {
+    padding: 1rem 1.5rem;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #45a049; /* Red background for buttons */
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  button:hover {
+    background-color: #45a049; /* Darker red on hover */
+    transform: translateY(-2px);
+  }
+  
+  button:disabled {
+    background-color: #6c757d; /* Disabled button color */
+    cursor: not-allowed;
+  }
+  
+  .error-message {
+    color: #f8d7da; /* Light red for errors */
+    background-color: #721c24; /* Dark background for error message */
+    border-color: #f5c6cb;
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+  
+  @media (max-width: 768px) {
+    .account-settings-container {
+      padding: 1rem;
+      margin: 1rem;
+    }
+  
+    h1 {
+      font-size: 1.75rem;
+    }
+  }
+  
+  /* Style enhancements for select dropdown */
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg viewBox='0 0 1024 1024' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M840.4 300H183.6c-4.4 0-8 3.6-8 8v1.6c0 4.4 3.5 8 7.9 8h656.8c4.4 0 8-3.6 8-8v-1.6c0-4.4-3.6-8-8-8z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 12px 12px;
+    padding-right: 2rem; /* Add padding to make room for the icon */
+  }
+  

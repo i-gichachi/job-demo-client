@@ -1,0 +1,119 @@
+/* EmployerJobseekerProfile.css */
+
+.jobseeker-view-container {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f8f9fa;
+    padding: 50px;
+    margin: -50px;
+}
+
+.jobseeker-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.jobseeker-card {
+    background: #343a40;
+    border-radius: 5px;
+    width: 250px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.jobseeker-card:hover {
+    transform: translateY(-5px);
+}
+
+.jobseeker-image {
+    margin-bottom: 10px;
+}
+
+.jobseeker-info h2 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.jobseeker-info p {
+    color: #666;
+    font-size: 16px;
+}
+
+.view-profile-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 10px;
+}
+
+.view-profile-btn:hover {
+    background-color: #0056b3;
+}
+
+.jobseeker-profile-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Lighter backdrop for a softer look */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background: #333941; /* Clean white background */
+    padding: 40px; /* Slightly more padding for a luxurious feel */
+    border-radius: 5px; /* Smoother rounded corners */
+    width: 600px;
+    max-width: 90%; /* Ensures padding on smaller screens */
+    max-height: 80vh;
+    overflow-y: auto; 
+    justify-content: space-between;
+}
+
+.close-modal-btn {
+    position: relative;
+    top: -10px;
+    right: -10px;
+    font-size: 24px;
+    line-height: 24px;
+    color: #333;
+    background: transparent;
+    border: none;
+}
+
+.send-contact-btn {
+    width: 100%;
+    background-color: #10828C; /* A more refined blue */
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px; /* Increased margin for better visual separation */
+    font-size: 16px;
+    font-weight: bold; /* Bold text for importance */
+    letter-spacing: 0.5px; /* Letter-spacing for an expansive look */
+    transition: background 0.3s ease;
+}
+
+.send-contact-btn:hover {
+    background-color: #0C6C84; /* Darken the button on hover for interactivity */
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 20px;
+    }
+}

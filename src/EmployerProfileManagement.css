@@ -1,0 +1,76 @@
+body {
+    background-color: #f4f4f4; /* Replace #HEX with the color code you've picked */
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #ccc; /* Adjust the text color for contrast if necessary */
+}
+
+.employer-profile-management-container {
+    background-color: #2c2e32; /* A deep, rich background for the container */
+    border-radius: 8px; /* Soft rounded corners */
+    padding: 50px; /* Increased padding for a more spacious layout */
+    margin: auto; /* Center the container with automatic margins */
+    max-width: 600px; 
+}
+
+.employer-profile-management-header {
+    margin-bottom: 40px; /* Increased space after the header section */
+}
+
+.employer-profile-management-header h1 {
+    font-size: 30px; /* Slightly larger font size */
+    font-weight: bold; /* Make the title bold */
+    color: #f4f4f4; /* Pure white color for the header text */
+    text-align: left; /* Align the title text to the left for a more traditional look */
+    border-bottom: none; /* Remove the underline from the title */
+}
+
+/* Style the form elements */
+.employer-profile-form .form-field {
+    background-color: #edf2f7; /* Light gray background for the form fields */
+    border: 2px solid #ced4da; /* Solid border for form fields */
+    border-radius: 4px; /* Slightly rounded borders for the fields */
+    padding: 1rem 1.25rem; /* Increased padding for larger input fields */
+    font-size: 1.25rem; /* Larger font size for better readability */
+    margin-bottom: 1rem; /* Maintain margin between fields */
+    height: 9rem; /* Optional: Define a specific height for the fields */
+}
+
+.employer-profile-form textarea[name="company_description"] {
+    height: 150px; /* Height for the textarea */
+    padding: 1rem; /* Padding can be the same or adjusted as needed */
+}
+
+.employer-profile-form .form-field:focus {
+    border-color: #9aabaf; /* A muted blue border for focus */
+    box-shadow: inset 0 1px 8px rgba(255, 255, 255, 0.3); /* Inner glow for a touch of depth */
+}
+  
+  /* Button styling */
+  .employer-profile-form .edit-button {
+    background-color: #007bff; /* Use a theme color for the edit button */
+    color: #fff; /* White text on the colored button */
+    padding: 12px 25px; /* Padding inside the button */
+    border: none; /* Remove the border for a modern look */
+    border-radius: 5px; /* Rounded corners for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-top: 10px; /* Margin above the button */
+  }
+  
+  .employer-profile-form .edit-button:hover {
+    background-color: #0056b3; /* Darken the button on hover */
+  }
+  
+  /* Error message styling */
+  .employer-profile-form .error-message {
+    color: #ffaaaa; /* Light red color for errors for better visibility */
+    margin-top: 5px; /* Small space above error message */
+    font-size: 14px; /* Font size for error text */
+  }
+  
+  @media (max-width: 768px) {
+    .employer-profile-management-container {
+        padding: 25px; /* Adjust padding on smaller screens */
+    }
+  }

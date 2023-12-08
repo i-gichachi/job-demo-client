@@ -1,0 +1,102 @@
+/* AdminDashboard.css */
+
+.admin-dashboard {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .admin-navbar {
+    display: flex;
+    justify-content: space-between; /* This will space out the navbar items */
+    align-items: center; /* This will vertically align the navbar items in the center */
+    background-color: #2c3e50; /* Background color */
+    color: white;
+    padding: 1rem;
+  }
+  
+  .admin-nav {
+    display: flex; /* This will make sure that your nav items are in a flex container */
+    align-items: center; /* This will vertically align the nav items if they have different heights */
+  }
+  
+  .admin-nav button {
+    margin: 0 10px; /* This gives a little space between your buttons */
+    /* Other styles */
+  }
+  
+  .admin-brand {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+  }
+  
+  .admin-brand svg {
+    margin-right: 10px;
+  }
+  
+  .admin-nav button {
+    background: none;
+    border: none;
+    color: white;
+    margin: 0 10px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .admin-nav button:hover {
+    background-color: #495057; /* Slightly lighter background on hover */
+    border-radius: 5px;
+  }
+  
+  .admin-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .admin-right svg {
+    margin-right: 10px;
+  }
+
+  .notification-bell {
+    cursor: pointer;
+    position: relative;
+    font-size: 18px;
+  }
+  
+  .notification-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 10px;
+    background: red;
+    color: white;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .admin-right button, .admin-right a {
+    background: #dc3545; /* Red background for buttons and logout link */
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 5px;
+    text-decoration: none; /* Remove underline from links */
+  }
+  
+  .admin-right button:hover, .admin-right a:hover {
+    background-color: #bd2130; /* Darker shade on hover */
+  }
+  
+  /* Main content area */
+  main {
+    margin-top: 20px;
+  }
+  

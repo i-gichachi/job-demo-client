@@ -1,0 +1,103 @@
+.job-posting-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+}
+
+.job-posting-title {
+    width: 100%;
+    text-align: center;
+    color: #333;
+    font-size: 2rem;
+    margin-top: 20px; /* Adjust this value to ensure it's below the navbar */
+}
+
+/* Each card is a flex item */
+.company-card, .job-posting-card {
+    border: 2px solid #ddd; /* Visible border */
+    border-radius: 8px; /* Rounded corners */
+    width: calc(33.333% - 20px); /* 3 items per row, minus gap */
+    box-sizing: border-box;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Hover effect for the cards */
+.company-card:hover, .job-posting-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+/* Image styling */
+.company-card img, .job-posting-card img {
+    border-radius: 50%; /* Circle image */
+    width: 100px; /* Set a fixed width */
+    height: 100px; /* Set a fixed height */
+    object-fit: cover; /* Cover the area without stretching */
+    margin-bottom: 10px;
+}
+
+/* Button styling */
+button {
+    background-color: #28a745; /* Button color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 15px; /* Space from the last text to button */
+}
+
+/* Adjust button hover effect */
+button:hover {
+    background-color: #218838;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .company-card, .job-posting-card {
+        width: calc(50% - 20px); /* 2 items per row on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .company-card, .job-posting-card {
+        width: 100%; /* 1 item per row on small screens */
+        margin-bottom: 20px;
+    }
+
+    .modal {
+        padding: 10px;
+        width: 100%;
+        max-height: 90vh;
+    }
+}
