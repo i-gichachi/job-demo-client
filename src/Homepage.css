@@ -61,12 +61,13 @@ h1 {
 }
 
 .card-image {
-    width: 60%;
-    height: 100%;
+    width: 60%; /* Adjust to fit the card */
+    height: 100%; /* Adjust to fit the card */
     background-size: cover;
     background-position: center;
     transition: transform 0.5s;
     animation: image-slide 1s ease-in-out;
+    object-fit: cover; /* This ensures the image covers the area without stretching */
 }
 
 .card:hover .card-image {

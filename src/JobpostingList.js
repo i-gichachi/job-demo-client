@@ -39,11 +39,15 @@ function JobpostingListing() {
 
     const groupByEmployers = (postings) => {
         return postings.reduce((acc, posting) => {
-            (acc[posting.employer.id] = acc[posting.employer.id] || []).push(posting)
-            return acc
-        }, {})
+            if (!posting.employer || !posting.employer.id) {
+                console.warn(`Missing employer data for posting: ${posting.id}`);
+                return acc; // Skip this posting if employer data is missing
+            }
+            (acc[posting.employer.id] = acc[posting.employer.id] || []).push(posting);
+            return acc;
+        }, {});
     }
-
+    
     const handleViewJobs = (employerId) => {
         console.log('Selected Employer ID:', employerId)
         const selectedPostings = jobPostings.filter(posting => posting.employer.id === employerId)

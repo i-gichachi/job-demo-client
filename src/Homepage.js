@@ -47,7 +47,7 @@ function Homepage() {
                 <div className="card-container">
                     {/* Brief Description Card */}
                     <div className="card">
-                        <div className="card-image" style={{ backgroundImage: 'url(https://greatresumesfast.com/wp-content/uploads/2011/10/job.jpg)' }}></div>
+                        <div className="card-image" style={{ backgroundImage: 'url(https://i.pinimg.com/564x/f1/08/f9/f108f928ab6566f49a93d1962b6251f0.jpg)' }}></div>
                         <div className="card-content">
                             <h2>Brief Description</h2>
                             <p>Our platform, based in Kenya, connects job seekers and employers in a streamlined, efficient manner. Job seekers can create profiles, post CVs, set job statuses, and explore job postings. Employers can manage job postings and initiate contact with potential candidates.</p>
@@ -55,7 +55,7 @@ function Homepage() {
                     </div>
                     {/* Advantages Card */}
                     <div className="card">
-                        <div className="card-image" style={{ backgroundImage: 'url(https://static.vecteezy.com/system/resources/previews/022/280/612/original/3d-illustration-of-job-seeker-holding-need-job-banner-png.png)' }}></div>
+                        <div className="card-image" style={{ backgroundImage: 'url(https://i.pinimg.com/564x/e1/f0/22/e1f0223ea36815548b775ea61a4c09e1.jpg)' }}></div>
                         <div className="card-content">
                             <h2>Advantages</h2>
                                 <p>Experience a tailored job search with our platform. Gain access to exclusive job listings, direct employer contacts, and a robust support system designed to align with your career aspirations. Say goodbye to endless searching and welcome targeted opportunities.</p>
@@ -64,7 +64,7 @@ function Homepage() {
 
                         {/* Mission Card */}
                         <div className="card">
-                            <div className="card-image" style={{ backgroundImage: 'url(https://cdn.pixabay.com/photo/2017/10/31/09/55/dream-job-2904780_1280.jpg)' }}></div>
+                            <div className="card-image" style={{ backgroundImage: 'url(https://i.pinimg.com/564x/e5/79/72/e57972081be54c44e317f7017181c843.jpg)' }}></div>
                             <div className="card-content">
                                 <h2>Mission</h2>
                             <p>Our mission is to revolutionize job seeking in Kenya by providing a dedicated platform that bridges the gap between talented individuals and potential employers. We aim to empower both job seekers and companies by facilitating efficient and meaningful connections.</p>
@@ -73,7 +73,7 @@ function Homepage() {
 
                             {/* Aim Card */}
                         <div className="card">
-    <                       div className="card-image" style={{ backgroundImage: 'url(https://img.freepik.com/free-vector/man-search-hiring-job-online-from-laptop_1150-52728.jpg)' }}></div>
+    <                       div className="card-image" style={{ backgroundImage: 'url(https://i.pinimg.com/564x/b2/9d/31/b29d3134e712c61692445901b8b59e3a.jpg)' }}></div>
                             <div className="card-content">
                                 <h2>Aim</h2>
                                 <p>Our aim is to enhance the job-seeking experience by offering a platform where job seekers can seamlessly connect with potential employers. We strive to provide an environment that fosters career growth and helps job seekers find roles that match their skills and ambitions.</p>
