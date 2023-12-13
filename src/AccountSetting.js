@@ -83,10 +83,10 @@ function AccountSettings() {
 
     return (
         <div className="account-settings-container"> 
-            <h1>Account Settings</h1>
+            <h1 className='account-settings'>Account Settings</h1>
             <Formik initialValues={userData} validationSchema={validationSchema} onSubmit={handleSubmit} enableReinitialize>
                 {({ isSubmitting }) => (
-                    <Form>
+                    <Form className='account-settings-form'>
                         <label htmlFor="username"> Username:</label>
                         <Field type="text" name="username" placeholder="Username" disabled={!editMode} />
                         <ErrorMessage name="username" component="div" />
