@@ -21,14 +21,24 @@ function EmployerDashboard() {
     const [isVerified, setIsVerified] = useState(false);
     const [notifications, setNotifications] = useState([]);
     const [lastPaymentDate, setLastPaymentDate] = useState(null);
+    const [nextVerificationDate, setNextVerificationDate] = useState(new Date());
 
     useEffect(() => {
+        // Calculate the next verification date (30 days from now)
+        let nextDate = new Date();
+        nextDate.setDate(nextDate.getDate() + 30);
+        setNextVerificationDate(nextDate);
+
         if (user && user.userId) {
             checkEmployerProfile();
             fetchNotifications();
-            // Redirect to manage profile if they have a profile but not verified
+            // Redirect to 'employerProfileManagement' if the user has a profile but is not verified
             if (hasProfile && !isVerified) {
                 setActiveComponent('employerProfileManagement');
+            }
+            // Redirect new employers to create their profile
+            if (!hasProfile) {
+                setActiveComponent('employerProfile');
             }
         }
     }, [user, hasProfile, isVerified]);
@@ -97,17 +107,16 @@ function EmployerDashboard() {
     };
 
     const canAccessPaymentVerification = () => {
-        if (!lastPaymentDate) return true;
-        const thirtyDaysAgo = new Date();
-        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-        return new Date(lastPaymentDate) < thirtyDaysAgo;
+        if (!isVerified) return true;
+        const today = new Date();
+        return today >= nextVerificationDate;
     };
 
     const handleNavClick = (component) => {
-        if (!isVerified && component !== 'employerProfile' && component !== 'paymentVerification' && component !== 'accountSettings') {
+        if (!isVerified && component !== 'employerProfile' && component !== 'accountSettings') {
             alert('You need to pay the verification fee to access this section.');
         } else if (component === 'paymentVerification' && !canAccessPaymentVerification()) {
-            alert('You have already paid the verification fee. Please wait for 30 days to verify again.');
+            alert(`You have already paid the verification fee. Next verification available on ${nextVerificationDate.toLocaleDateString()}.`);
         } else {
             setActiveComponent(component);
         }
@@ -126,7 +135,10 @@ function EmployerDashboard() {
             case 'accountSettings':
                 return <AccountSettings />;
             case 'paymentVerification':
-                return <PaymentVerification onPaymentSuccess={onPaymentSuccess} />;
+                if (canAccessPaymentVerification()) {
+                    return <PaymentVerification onPaymentSuccess={onPaymentSuccess} />;
+                }
+                return null;
             case 'notifications':
                 return <Notifications />;
             case 'employerSearch':
@@ -164,6 +176,12 @@ function EmployerDashboard() {
                     </ul>
                 </nav>
                 <div className="nav-right">
+                 <div className="notification-icon" onClick={() => setActiveComponent('notifications')}>
+                        <FaBell />
+                        {unreadNotificationsCount > 0 && (
+                            <span className="notification-count">{unreadNotificationsCount}</span>
+                        )}
+                    </div>
                     <Logout />
                 </div>
             </header>
