@@ -1,47 +1,32 @@
 import React, { useState } from 'react';
-import { useUserContext } from './UserContext'; // Import the context hook
 import './PaymentVerification.css'
 
 function PaymentVerification() {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [isProcessing, setIsProcessing] = useState(false);
-    const { user } = useUserContext(); // Use the context to access user data
 
     const initiatePayment = async () => {
+        // Prepend the country code if it's not already included
+        const fullPhoneNumber = phoneNumber.startsWith('254') ? phoneNumber : `254${phoneNumber}`;
+
         setIsProcessing(true);
+        const response = await fetch('https://test-server-6mxa.onrender.com/stk-push', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ phone_number: `+${fullPhoneNumber}`, amount: 1 })
+        });
 
-        try {
-            const response = await fetch('https://test-server-6mxa.onrender.com/stk-push', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ phone_number: phoneNumber, amount: 1 })
-            });
-            const data = await response.json();
+        const data = await response.json();
+        setIsProcessing(false);
 
-            if (response.ok) {
-                alert('Please check your phone to complete the M-Pesa transaction.');
-
-                // Start polling for payment status
-                const employerId = user.userId; // Use the employer ID from the user context
-                const interval = setInterval(async () => {
-                    const statusResponse = await fetch(`https://test-server-6mxa.onrender.com/payment-status/${employerId}`);
-                    const statusData = await statusResponse.json();
-                    if (statusData.verified) {
-                        clearInterval(interval);
-                        setIsProcessing(false);
-                        alert('Payment verified successfully!');
-                        // Update any additional state or perform further actions here
-                    }
-                }, 5000); // Poll every 5 seconds
-            } else {
-                alert('Error: ' + data.message);
-                setIsProcessing(false);
-            }
-        } catch (error) {
-            alert('An error occurred: ' + error.message);
-            setIsProcessing(false);
+        if (response.ok) {
+            // If the STK Push was initiated successfully, alert the user to complete the payment
+            alert('Please check your phone to complete the M-Pesa transaction.');
+        } else {
+            // If there was an error, display it to the user
+            alert('Error: ' + data.message);
         }
     };
 
@@ -51,17 +36,16 @@ function PaymentVerification() {
             <div className="payment-form">
                 <input
                     type="tel"
-                    className="phone-input"
-                    placeholder="Enter phone number"
+                    placeholder="Enter last 9 digits of your phone number"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     disabled={isProcessing}
                 />
-                <button className="pay-button" onClick={initiatePayment} disabled={isProcessing}>
-                    {isProcessing ? 'Processing...' : 'Pay with M-Pesa'}
+                <button onClick={initiatePayment} disabled={isProcessing || phoneNumber.length !== 9}>
+                    {isProcessing ? 'Processing...' : 'Pay Ksh 1 with M-Pesa'}
                 </button>
             </div>
-            {isProcessing && <p className="processing-message">Please complete the M-Pesa transaction on your phone...</p>}
+            {isProcessing && <p>Please complete the M-Pesa transaction on your phone...</p>}
         </div>
     );
 }
