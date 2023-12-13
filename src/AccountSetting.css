@@ -1,11 +1,10 @@
-/* AccountSetting.css */
 .account-settings-container {
-  background: #343a40; /* Main background for dark mode */
-  color: #fff; /* Text color for dark mode */
-  font-family: 'Arial', sans-serif; /* Font family */
+  background: #343a40; 
+  color: #fff;
+  font-family: 'Arial', sans-serif; 
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* More pronounced shadow for depth */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
   max-width: 600px;
   margin: 30px auto;
 }
@@ -17,7 +16,7 @@
 }
 
 .account-settings-form {
-  background: #171c21; /* Form background for dark mode */
+  background: #171c21; 
   padding: 20px;
   border-radius: 4px;
 }
@@ -34,19 +33,19 @@
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
-  border: 1px solid #ced4da; /* Adding a border for better visibility */
+  border: 1px solid #ced4da; 
   border-radius: 4px;
   font-size: 16px;
-  background: #6c757d; /* Slightly lighter input background for contrast */
-  color: #e9ecef; /* Light text for readability */
+  background: #6c757d; 
+  color: #e9ecef; 
 }
 
 .account-settings-form input[type="text"]:disabled,
 .account-settings-form input[type="email"]:disabled,
 .account-settings-form select:disabled {
-  background: #5a6268; /* Darker background for disabled inputs */
+  background: #5a6268;
   cursor: not-allowed;
-  color: #adb5bd; /* Gray text for disabled inputs */
+  color: #adb5bd; 
 }
 
 .account-settings-form button {
@@ -54,28 +53,28 @@
   padding: 10px;
   border: none;
   border-radius: 4px;
-  color: #343a40; /* Dark text for buttons */
-  background-color: #f8f9fa; /* Light background for buttons */
+  color: #343a40; 
+  background-color: #f8f9fa;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s;
 }
 
 .account-settings-form button:hover {
-  background-color: #e2e6ea; /* Slightly darker on hover */
-  color: #212529; /* Slightly darker text on hover */
+  background-color: #e2e6ea; 
+  color: #212529; 
 }
 
 .account-settings-form button[type="button"] {
-  background-color: #6c757d; /* Button color for secondary actions */
+  background-color: #6c757d; 
 }
 
 .account-settings-form button[type="button"]:hover {
-  background-color: #5a6268; /* Darker shade on hover for secondary buttons */
+  background-color: #5a6268;
 }
 
 .account-settings-form .errorMessage {
-  color: #ff4444; /* Brighter red for error messages for better visibility */
+  color: #ff4444; 
   font-size: 12px;
   margin-bottom: 10px;
 }
