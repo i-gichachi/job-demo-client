@@ -42,10 +42,12 @@ function PaymentVerification() {
         const response = await fetch('https://test-server-6mxa.onrender.com/stk-push', {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer ${token}`, // Include the JWT in the request
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({ phone_number: phoneNumber, amount: 1 })
         });
+
 
         const data = await response.json();
 
