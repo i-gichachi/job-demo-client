@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useUserContext } from './UserContext'; // Import the context hook
 import './PaymentVerification.css';
 
@@ -7,24 +7,33 @@ function PaymentVerification() {
     const [isProcessing, setIsProcessing] = useState(false);
     const [isVerified, setIsVerified] = useState(false);
     const { user } = useUserContext(); // Use the context to access user data
+    const intervalId = useRef(null); // Store interval ID for clearing
 
-    // Ensure the employerId is retrieved from the user context
-    const employerId = user ? user.userId : null;
+    const getAuthToken = () => {
+        return localStorage.getItem('token'); // Fetch the token from local storage
+    };
 
     const checkVerificationStatus = async () => {
-        if (!employerId) return;
-        const response = await fetch(`https://test-server-6mxa.onrender.com/payment-status/${employerId}`);
-        const data = await response.json();
-        if (data.verified) {
-            setIsProcessing(false);
-            setIsVerified(true);
-            alert('Payment verified successfully! Your account is now verified.');
+        if (user && user.userId) {
+            const token = getAuthToken();
+            const response = await fetch(`https://test-server-6mxa.onrender.com/payment-status/${user.userId}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}` // Include the JWT in the request
+                }
+            });
+            const data = await response.json();
+            if (data.verified) {
+                clearInterval(intervalId.current);
+                setIsProcessing(false);
+                setIsVerified(true);
+                alert('Payment verified successfully! Your account is now verified.');
+            }
         }
     };
 
     const initiatePayment = async () => {
-        if (!employerId) {
-            alert('Employer ID not found.');
+        if (!user || !user.userId) {
+            alert("Error: User not identified.");
             return;
         }
 
@@ -41,8 +50,7 @@ function PaymentVerification() {
 
         if (response.ok) {
             alert('Please check your phone to complete the M-Pesa transaction.');
-            const interval = setInterval(checkVerificationStatus, 5000); // Poll every 5 seconds
-            setTimeout(() => clearInterval(interval), 60000); // Stop polling after 60 seconds
+            intervalId.current = setInterval(checkVerificationStatus, 5000); // Poll every 5 seconds
         } else {
             alert('Error: ' + data.message);
             setIsProcessing(false);
@@ -50,10 +58,12 @@ function PaymentVerification() {
     };
 
     useEffect(() => {
-        if (isVerified) {
-            // Perform actions after verification, e.g., redirect or update UI
-        }
-    }, [isVerified]);
+        return () => {
+            if (intervalId.current) {
+                clearInterval(intervalId.current); // Clear interval on component unmount
+            }
+        };
+    }, []);
 
     return (
         <div className="payment-verification">
@@ -61,12 +71,11 @@ function PaymentVerification() {
             <div className="payment-form">
                 <input
                     type="tel"
-                    className="phone-input"
                     placeholder="2547XXXXXXXX"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     disabled={isProcessing}
-                    maxLength={12}  // 3 digits for '254' and 9 for the phone number
+                    maxLength={12}
                 />
                 <button onClick={initiatePayment} disabled={isProcessing || phoneNumber.length !== 12}>
                     {isProcessing ? 'Processing...' : 'Pay Ksh 1 with M-Pesa'}
