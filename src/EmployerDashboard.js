@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaUserTie, FaBell } from 'react-icons/fa';
+import { FaUserTie, FaBell, FaCheckCircle } from 'react-icons/fa';
 import EmployerJobseekerView from './EmployerJobseekerProfile';
 import EmployerProfile from './EmployerProfile';
 import EmployerProfileManagement from './EmployerProfileManagement';
@@ -87,13 +87,21 @@ function EmployerDashboard() {
 
     const onPaymentSuccess = () => {
         setIsVerified(true);
-        // Optionally redirect the user to a different component after successful payment
+        window.location.reload(); // Reload the page to update the state and UI
+    };
+
+    const handleNavClick = (component) => {
+        if (!isVerified && component !== 'employerProfile' && component !== 'paymentVerification') {
+            alert('You need to pay the verification fee to access this section.');
+        } else {
+            setActiveComponent(component);
+        }
     };
 
     const renderComponent = () => {
         switch (activeComponent) {
             case 'employerProfile':
-                return <EmployerProfile onProfileCreated={onProfileCreated} />;
+                return <EmployerProfile onProfileCreated={() => setHasProfile(true)} />;
             case 'employerProfileManagement':
                 return <EmployerProfileManagement />;
             case 'jobPosting':
@@ -105,9 +113,9 @@ function EmployerDashboard() {
             case 'paymentVerification':
                 return <PaymentVerification onPaymentSuccess={onPaymentSuccess} />;
             case 'notifications':
-                return <Notifications onAllRead={handleAllNotificationsRead} />;
+                return <Notifications />;
             case 'employerSearch':
-                return <EmployerSearch onViewProfile={handleViewProfile} />;
+                return <EmployerSearch />;
             case 'jobseekerView':
             default:
                 return <EmployerJobseekerView />;
@@ -119,33 +127,26 @@ function EmployerDashboard() {
             <header className="employer-navbar">
                 <div className="brand-container">
                     {user && user.userType === 'employer' && <FaUserTie className="brand-icon"/>}
-                    <span className="brand-name">{user ? user.username : 'Loading...'}</span>
+                    <span className="brand-name">{user ? `${user.username} ${isVerified ? <FaCheckCircle className="verified-icon"/> : ''}` : 'Loading...'}</span>
                 </div>
                 <nav className="employer-nav">
                     <ul>
-                        <li onClick={() => setActiveComponent('jobseekerView')}>Jobseeker Profiles</li>
-                        {!hasProfile && (
-                            <li onClick={() => setActiveComponent('employerProfile')}>Create Profile</li>
-                        )}
-                        {hasProfile && (
+                        <li onClick={() => handleNavClick('jobseekerView')}>Jobseeker Profiles</li>
+                        {!hasProfile ? (
+                            <li onClick={() => handleNavClick('employerProfile')}>Create Profile</li>
+                        ) : (
                             <>
-                                <li onClick={() => setActiveComponent('employerProfileManagement')}>Manage Profile</li>
-                                <li onClick={() => setActiveComponent('jobPosting')}>Create Job Posting</li>
-                                <li onClick={() => setActiveComponent('jobPostingManagement')}>Manage Job Postings</li>
+                                <li onClick={() => handleNavClick('employerProfileManagement')}>Manage Profile</li>
+                                <li onClick={() => handleNavClick('jobPosting')}>Create Job Posting</li>
+                                <li onClick={() => handleNavClick('jobPostingManagement')}>Manage Job Postings</li>
                             </>
                         )}
-                        <li onClick={() => setActiveComponent('accountSettings')}>Account Settings</li>
-                        <li onClick={() => setActiveComponent('paymentVerification')}>Payment Verification</li>
-                        <li onClick={() => setActiveComponent('employerSearch')}>Search Jobseekers</li>
+                        <li onClick={() => handleNavClick('accountSettings')}>Account Settings</li>
+                        <li onClick={() => handleNavClick('paymentVerification')}>Payment Verification</li>
+                        <li onClick={() => handleNavClick('employerSearch')}>Search Jobseekers</li>
                     </ul>
                 </nav>
                 <div className="nav-right">
-                    <div className="notification-icon" onClick={() => setActiveComponent('notifications')}>
-                        <FaBell />
-                        {unreadNotificationsCount > 0 && (
-                            <span className="notification-count">{unreadNotificationsCount}</span>
-                        )}
-                    </div>
                     <Logout />
                 </div>
             </header>
