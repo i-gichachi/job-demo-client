@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { ListGroup, Button } from 'react-bootstrap';
-import './Notification.css'
+import { IoIosMail } from 'react-icons/io'; // Importing a mail icon
+import './Notification.css';
 
 function Notifications({ onAllRead }) {
-    const [notifications, setNotifications] = useState([])
+    const [notifications, setNotifications] = useState([]);
 
     useEffect(() => {
         fetchNotifications();
         const interval = setInterval(fetchNotifications, 30000); // Poll every 30 seconds
         return () => clearInterval(interval);
-    }, [])
+    }, []);
 
     const getAuthToken = () => {
         return localStorage.getItem('token'); // Fetch the token from local storage
@@ -26,7 +27,9 @@ function Notifications({ onAllRead }) {
             });
             if (response.ok) {
                 const data = await response.json();
-                setNotifications(data);
+                // Initialize expanded state for each notification
+                const notificationsWithExpanded = data.map(n => ({ ...n, expanded: false }));
+                setNotifications(notificationsWithExpanded);
             }
         } catch (error) {
             console.error('Error fetching notifications:', error);
@@ -59,6 +62,15 @@ function Notifications({ onAllRead }) {
         onAllRead(); // This will update the state in the parent component
     };
 
+    const toggleDetails = (id) => {
+        setNotifications(notifications.map(notification => {
+            if (notification.id === id) {
+                return { ...notification, expanded: !notification.expanded };
+            }
+            return notification;
+        }));
+    };
+
     return (
         <div>
             <h2>Notifications</h2>
@@ -66,7 +78,18 @@ function Notifications({ onAllRead }) {
             <ListGroup>
                 {notifications.map(notification => (
                     <ListGroup.Item key={notification.id} variant={notification.is_read ? "light" : "info"}>
-                        {notification.message}
+                        <span style={{ cursor: 'pointer' }}>
+                            <IoIosMail 
+                                onClick={() => toggleDetails(notification.id)}
+                                style={{ marginRight: '10px' }} // Icon style
+                            />
+                            {notification.title || notification.type || 'Notification'} {/* Title or type shown next to icon */}
+                        </span>
+                        {notification.expanded && (
+                            <div style={{ marginTop: '10px' }}>
+                                {notification.message} {/* Full message displayed here */}
+                            </div>
+                        )}
                         {!notification.is_read && (
                             <Button variant="primary" size="sm" onClick={() => markAsRead(notification.id)} style={{ float: 'right' }}>
                                 Mark as Read
