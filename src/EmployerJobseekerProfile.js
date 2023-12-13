@@ -17,11 +17,11 @@ function EmployerJobseekerView() {
     }, [user])
 
     const getAuthToken = () => {
-        return localStorage.getItem('token'); // Replace 'authToken' with your actual token key
-    };
+        return localStorage.getItem('token')
+    }
 
     const fetchJobseekers = async () => {
-        const authToken = getAuthToken();
+        const authToken = getAuthToken()
         try {
             const response = await fetch('https://test-server-6mxa.onrender.com/jobseekers/view', {
                 headers: {
@@ -68,16 +68,16 @@ function EmployerJobseekerView() {
         } catch (error) {
             console.error('Error sending contact request:', error)
         }
-    };
+    }
 
     const VerifiedIcon = ({ isVerified }) => (
         isVerified ? <FaCheckCircle color="green" /> : <FaTimesCircle color="red" />
-    );
+    )
 
     const handleCloseModal = () => {
         setShowModal(false);
-        setContactMessage(''); // Reset the contact message
-    };
+        setContactMessage('')
+    }
 
     return (
         <div className="jobseeker-view-container">
@@ -133,7 +133,7 @@ function EmployerJobseekerView() {
                 </div>
             )}
         </div>
-    );
+    )
 }
 
-export default EmployerJobseekerView;
+export default EmployerJobseekerView

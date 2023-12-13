@@ -5,18 +5,18 @@ import { useUserContext } from './UserContext';
 import './EmployerProfileManagement.css'
 
 function EmployerProfileManagement() {
-    const [editMode, setEditMode] = useState(false);
+    const [editMode, setEditMode] = useState(false)
     const [profileData, setProfileData] = useState({
         company_name: '',
         company_image: '',
         company_description: ''
-    });
+    })
     const { user } = useUserContext();
 
     useEffect(() => {
         const fetchData = async () => {
             if (user && user.userId) {
-                const authToken = localStorage.getItem('token'); // Replace 'authToken' with your actual token key
+                const authToken = localStorage.getItem('token')
                 try {
                     const profileResponse = await fetch(`https://test-server-6mxa.onrender.com/employer/profile/${user.userId}`, {
                         headers: {
@@ -27,19 +27,19 @@ function EmployerProfileManagement() {
                         const data = await profileResponse.json();
                         setProfileData(data);
                     } else {
-                        console.error('Failed to fetch profile data');
+                        console.error('Failed to fetch profile data')
                     }
                 } catch (error) {
-                    console.error('Error fetching data:', error);
+                    console.error('Error fetching data:', error)
                 }
             }
-        };
+        }
 
-        fetchData();
-    }, [user]);
+        fetchData()
+    }, [user])
 
     const handleSubmit = async (values) => {
-        const authToken = localStorage.getItem('token'); // Replace 'authToken' with your actual token key
+        const authToken = localStorage.getItem('token')
         try {
             const requestOptions = {
                 method: 'PUT',
@@ -48,28 +48,28 @@ function EmployerProfileManagement() {
                     'Authorization': `Bearer ${authToken}`
                 },
                 body: JSON.stringify(values)
-            };
+            }
 
             if (user && user.userId) {
-                const response = await fetch(`https://test-server-6mxa.onrender.com/employer/profile/${user.userId}`, requestOptions);
+                const response = await fetch(`https://test-server-6mxa.onrender.com/employer/profile/${user.userId}`, requestOptions)
                 if (response.ok) {
                     alert('Employer profile updated successfully');
-                    setEditMode(false);
+                    setEditMode(false)
                 } else {
                     const data = await response.json();
-                    alert(data.message || 'Unable to update profile. Please try again.');
+                    alert(data.message || 'Unable to update profile. Please try again.')
                 }
             }
         } catch (error) {
             console.error('Error:', error);
         }
-    };
+    }
 
     const validationSchema = Yup.object().shape({
         company_name: Yup.string().required('Company name is required'),
         company_image: Yup.string().required('Company image URL is required'),
         company_description: Yup.string().required('Company description is required')
-    });
+    })
 
     return (
         <div className='employer-profile-management-container'>
@@ -106,7 +106,7 @@ function EmployerProfileManagement() {
                 )}
             </Formik>
         </div>
-    );
+    )
 }
 
-export default EmployerProfileManagement;
+export default EmployerProfileManagement

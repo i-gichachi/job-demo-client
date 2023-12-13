@@ -1,48 +1,48 @@
 .employer-search-container {
-    background: #343a40; /* Dark background for the form */
+    background: #343a40; 
     padding: 20px;
-    border-radius: 8px; /* Rounded corners for the form */
-    max-width: 600px; /* Max width of the form */
-    margin: 20px auto; /* Center the form */
-  }
+    border-radius: 8px; 
+    max-width: 600px; 
+    margin: 20px auto; 
+}
   
-  .employer-search-container h2 {
-    color: #ffffff; /* White color for the heading */
-    text-align: center; /* Center align the heading */
-    margin-bottom: 20px; /* Space below the heading */
-  }
+.employer-search-container h2 {
+    color: #ffffff; 
+    text-align: center; 
+    margin-bottom: 20px; 
+}
   
-  .employer-search-container select,
-  .employer-search-container button {
-    width: 100%; /* Full width */
-    padding: 10px; /* Padding inside the elements */
-    margin-bottom: 10px; /* Space between elements */
-    border-radius: 5px; /* Slightly rounded corners for the elements */
-  }
+.employer-search-container select,
+.employer-search-container button {
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
   
-  .employer-search-container select {
-    color: #ffffff; /* White color for the text */
-    border: 1px solid #1abc9c; /* Green border color */
-  }
+.employer-search-container select {
+    color: #ffffff;
+    border: 1px solid #1abc9c;
+}
   
-  .employer-search-container button {
-    background-color: #1abc9c; /* Green background for the button */
-    color: #ffffff; /* White color for the button text */
-    border: none; /* No border for the button */
-    cursor: pointer; /* Pointer cursor on hover */
-  }
+.employer-search-container button {
+    background-color: #1abc9c; 
+    color: #ffffff; 
+    border: none; 
+    cursor: pointer;
+}
   
-  .employer-search-container button:hover {
-    background-color: #16a085; /* Darker green on hover */
-  }
+.employer-search-container button:hover {
+    background-color: #16a085; 
+}
   
-  /* Error message style */
-  .error-message {
-    color: #e74c3c; /* Red color for errors */
-    text-align: center; /* Center align the error message */
-  }
+
+.error-message {
+    color: #e74c3c;
+    text-align: center;
+}
     
-  .modal-overlay {
+.modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -53,10 +53,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
   
-  /* Modal content container */
-  .modal-content {
+.modal-content {
     background: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -66,10 +65,9 @@
     max-height: 80vh;
     overflow-y: auto;
     position: relative;
-  }
+}
   
-  /* Close button */
-  .close-modal {
+.close-modal {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -77,37 +75,35 @@
     background: none;
     font-size: 24px;
     cursor: pointer;
-  }
+}
   
-  /* Style for the table */
-  table {
+table {
     width: 100%;
     border-collapse: collapse;
-  }
+}
   
-  th, td {
+th, td {
     text-align: left;
     padding: 8px;
     border-bottom: 1px solid #ddd;
-  }
+}
   
-  th {
+th {
     background-color: #f2f2f2;
-  }
+}
   
-  /* Scrollbar styles */
-  .modal-content::-webkit-scrollbar {
+.modal-content::-webkit-scrollbar {
     width: 5px;
-  }
+}
   
-  .modal-content::-webkit-scrollbar-track {
+.modal-content::-webkit-scrollbar-track {
     background: #f1f1f1;
-  }
+}
   
-  .modal-content::-webkit-scrollbar-thumb {
+.modal-content::-webkit-scrollbar-thumb {
     background: #888;
-  }
+}
   
-  .modal-content::-webkit-scrollbar-thumb:hover {
+.modal-content::-webkit-scrollbar-thumb:hover {
     background: #555;
-  }
+}

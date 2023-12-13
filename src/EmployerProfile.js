@@ -5,16 +5,16 @@ import { useUserContext } from './UserContext';
 import './EmployerProfile.css'
 
 function EmployerProfile(props) {
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const { user } = useUserContext();
+    const [isSubmitted, setIsSubmitted] = useState(false)
+    const { user } = useUserContext()
 
     const handleSubmit = async (values) => {
         const employerProfileData = {
             ...values,
             userId: user.userId
-        };
+        }
 
-        const authToken = localStorage.getItem('token'); // Replace 'authToken' with your actual token key
+        const authToken = localStorage.getItem('token')
 
         try {
             const requestOptions = {
@@ -24,26 +24,26 @@ function EmployerProfile(props) {
                     'Authorization': `Bearer ${authToken}`
                 },
                 body: JSON.stringify(employerProfileData)
-            };
-            const response = await fetch('https://test-server-6mxa.onrender.com/employer/profile', requestOptions);
+            }
+            const response = await fetch('https://test-server-6mxa.onrender.com/employer/profile', requestOptions)
             if (response.ok) {
                 setIsSubmitted(true);
-                alert('Employer profile created successfully');
-                props.onProfileCreated();
+                alert('Employer profile created successfully')
+                props.onProfileCreated()
             } else {
-                const data = await response.json();
-                alert(data.message || 'Unable to create profile. Please try again.');
+                const data = await response.json()
+                alert(data.message || 'Unable to create profile. Please try again.')
             }
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Error:', error)
         }
-    };
+    }
 
     const validationSchema = Yup.object().shape({
         company_name: Yup.string().required('Company name is required'),
         company_image: Yup.string().required('Company image URL is required'),
         company_description: Yup.string().required('Company description is required')
-    });
+    })
 
     if (isSubmitted) {
         return <p>Profile submitted successfully.</p>;
@@ -73,7 +73,7 @@ function EmployerProfile(props) {
                 )}
             </Formik>
         </div>
-    );
+    )
 }
 
-export default EmployerProfile;
+export default EmployerProfile

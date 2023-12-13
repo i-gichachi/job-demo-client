@@ -25,9 +25,9 @@ const counties = [
 ]
 
 function JobPosting() {
-    const handleSubmit = async (values, { setSubmitting }) => {
+    const handleSubmit = async (values, { setSubmitting, resetForm }) => {
         try {
-            const authToken = localStorage.getItem('token'); // Replace 'authToken' with your actual token key
+            const authToken = localStorage.getItem('token')
 
             const requestOptions = {
                 method: 'POST',
@@ -36,22 +36,23 @@ function JobPosting() {
                     'Authorization': `Bearer ${authToken}`
                 },
                 body: JSON.stringify(values)
-            };
+            }
 
-            const response = await fetch('https://test-server-6mxa.onrender.com/jobposting/create', requestOptions);
-            const data = await response.json();
+            const response = await fetch('https://test-server-6mxa.onrender.com/jobposting/create', requestOptions)
+            const data = await response.json()
 
             if (response.ok) {
-                alert(`Job posting '${values.title}' created successfully`);
+                alert(`Job posting '${values.title}' created successfully`)
+                resetForm()
             } else {
-                alert(data.message || 'Unable to create job posting. Please try again.');
+                alert(data.message || 'Unable to create job posting. Please try again.')
             }
         } catch (error) {
-            console.error('Error:', error);
-            alert('An error occurred. Please try again.');
+            console.error('Error:', error)
+            alert('An error occurred. Please try again.')
         }
 
-        setSubmitting(false);
+        setSubmitting(false)
     }
 
     return (
@@ -125,7 +126,7 @@ function JobPosting() {
                 )}
             </Formik>
         </div>
-    );
+    )
 }
 
 export default JobPosting

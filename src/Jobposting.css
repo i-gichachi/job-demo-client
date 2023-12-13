@@ -1,95 +1,90 @@
-/* JobPosting.css */
-
 body {
-    background: #282c34; /* Updated to a more modern dark blue-grey */
-    color: #adb5bd; /* A softer shade of grey for the body text */
-    font-family: 'Segoe UI', Helvetica, Arial, sans-serif; /* Modern and clean font */
-    line-height: 1.6; /* More readable line height */
+    background: #282c34; 
+    color: #adb5bd; 
+    font-family: 'Segoe UI', Helvetica, Arial, sans-serif; 
+    line-height: 1.6; 
     margin: 0;
     padding: 0;
 }
   
 .job-posting-container {
-    background: #323840; /* Slightly lighter shade for the container for a subtle contrast */
-    color: #e9ecef; /* Light grey text for better readability */
-    border-radius: 10px; /* Softer rounded corners */
-    padding: 30px; /* Increased padding for a roomier feel */
-    margin: 30px auto; /* Slightly more vertical space */
-    max-width: 700px; /* Maximum width of the container */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Larger shadow for a more pronounced 3D effect */
-    transition: box-shadow 0.3s ease; /* Smooth transition for shadow on hover */
+    background: #323840;
+    color: #e9ecef; 
+    border-radius: 10px; 
+    padding: 30px; 
+    margin: 30px auto;
+    max-width: 700px; 
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
 }
 
 .job-posting-container:hover {
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); /* Dynamic interaction on hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); 
 }
 
 .job-posting-header {
-    margin-bottom: 25px; /* More space below the header */
+    margin-bottom: 25px; 
 }
   
 .job-posting-header h1 {
-    font-size: 30px; /* Larger font size for a bold header */
-    color: #ffffff; /* Pure white for the header text for contrast */
-    text-align: left; /* Align left for a modern layout */
-    padding-bottom: 15px; /* More padding for a pronounced effect */
-    border-bottom: 2px solid #6c757d; /* Thicker border for modernity */
+    font-size: 30px; 
+    color: #ffffff; 
+    text-align: left;
+    padding-bottom: 15px; 
+    border-bottom: 2px solid #6c757d;
 }
   
-/* Style the form fields */
 .form-field,
 .form-select,
 .form-textarea {
-    background-color: #434a52; /* A shade lighter to differentiate from the body background */
-    color: #f8f9fa; /* Even lighter text color for contrast */
-    border: none; /* Removing the border for a cleaner look */
-    border-radius: 5px; /* Consistent rounded corners */
-    padding: 15px; /* More padding for larger click areas */
-    margin-bottom: 25px; /* More space between fields */
-    transition: background-color 0.3s ease; /* Smooth transition for interaction */
+    background-color: #434a52; 
+    color: #f8f9fa; 
+    border: none; 
+    border-radius: 5px; 
+    padding: 15px; 
+    margin-bottom: 25px;
+    transition: background-color 0.3s ease;
 }
 
 .form-field:focus,
 .form-select:focus,
 .form-textarea:focus {
-    background-color: #495057; /* Slightly lighter on focus for visual feedback */
-    outline: none; /* Removing the outline for a cleaner look */
+    background-color: #495057; 
+    outline: none; 
 }
 
-/* Style the error messages */
 .error-message {
-    color: #f44336; /* A stronger red for errors to catch attention */
-    font-size: 0.875rem; /* Smaller font size for subtlety */
-    margin-top: -10px; /* Adjusted margin to bring error closer to the input */
-    margin-bottom: 20px; /* More space below the error message */
+    color: #f44336;
+    font-size: 0.875rem; 
+    margin-top: -10px; 
+    margin-bottom: 20px;
 }
   
-/* Style the submit button */
 .form-button {
-    background-color: #007bff; /* A bold blue that stands out as a call to action */
-    color: #ffffff; /* White text for contrast */
-    border: none; /* No border for a clean button */
-    border-radius: 5px; /* Softly rounded corners */
-    padding: 20px 40px; /* Larger padding for a more substantial button */
-    font-size: 18px; /* Larger font size for visibility */
-    font-weight: 600; /* Bold font weight */
-    margin-top: 20px; /* More space above the button */
-    cursor: pointer; /* Pointer cursor */
-    display: block; /* Block display to take full width */
-    width: 100%; /* Full width */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    background-color: #007bff; 
+    color: #ffffff; 
+    border: none;
+    border-radius: 5px;
+    padding: 20px 40px;
+    font-size: 18px; 
+    font-weight: 600; 
+    margin-top: 20px;
+    cursor: pointer; 
+    display: block; 
+    width: 100%;
+    transition: background-color 0.3s ease; 
 }
 
 .form-button:hover,
 .form-button:focus {
-    background-color: #0056b3; /* A darker blue for hover and focus states */
-    outline: none; /* Removing the outline on focus for a cleaner look */
+    background-color: #0056b3; 
+    outline: none; 
 }
   
 @media (max-width: 768px) {
     .job-posting-container {
         margin: 20px;
-        padding: 25px; /* Adjusting padding for a consistent feel */
+        padding: 25px;
     }
   
     .job-posting-header h1 {

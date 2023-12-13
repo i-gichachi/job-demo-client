@@ -14,61 +14,62 @@ import { useUserContext } from './UserContext';
 import './EmployerDashboard.css'
 
 function EmployerDashboard() {
-    const [hasProfile, setHasProfile] = useState(false);
-    const [activeComponent, setActiveComponent] = useState('jobseekerView');
-    const [selectedJobseekerId, setSelectedJobseekerId] = useState(null);
-    const { user } = useUserContext();
-    const [isVerified, setIsVerified] = useState(false);
-    const [notifications, setNotifications] = useState([]);
-    const [lastPaymentDate, setLastPaymentDate] = useState(null);
-    const [nextVerificationDate, setNextVerificationDate] = useState(new Date());
+    const [hasProfile, setHasProfile] = useState(false)
+    const [activeComponent, setActiveComponent] = useState('jobseekerView')
+    const [selectedJobseekerId, setSelectedJobseekerId] = useState(null)
+    const { user } = useUserContext()
+    const [isVerified, setIsVerified] = useState(false)
+    const [notifications, setNotifications] = useState([])
+    const [lastPaymentDate, setLastPaymentDate] = useState(null)
+    const [nextVerificationDate, setNextVerificationDate] = useState(new Date())
 
     useEffect(() => {
-        // Calculate the next verification date (30 days from now)
         let nextDate = new Date();
-        nextDate.setDate(nextDate.getDate() + 30);
-        setNextVerificationDate(nextDate);
+        nextDate.setDate(nextDate.getDate() + 30)
+        setNextVerificationDate(nextDate)
 
         if (user && user.userId) {
-            checkEmployerProfile();
-            fetchNotifications();
-            // Redirect to 'employerProfileManagement' if the user has a profile but is not verified
-            if (hasProfile && !isVerified) {
-                setActiveComponent('employerProfileManagement');
-            }
-            // Redirect new employers to create their profile
-            if (!hasProfile) {
-                setActiveComponent('employerProfile');
-            }
+            checkEmployerProfile().then(() => {
+                if (!hasProfile) {
+                    setActiveComponent('employerProfile')
+                } else if (hasProfile && !isVerified) {
+                    setActiveComponent('employerProfileManagement')
+                } else if (hasProfile && isVerified) {
+                    setActiveComponent('jobseekerView')
+                }
+            })
         }
-    }, [user, hasProfile, isVerified]);
+    }, [user])
+
 
     const getAuthToken = () => {
-        return localStorage.getItem('token'); // Replace 'authToken' with your actual token key
-    };
+        return localStorage.getItem('token')
+    }
 
     const checkEmployerProfile = async () => {
-        const authToken = getAuthToken();
+        const authToken = getAuthToken()
         try {
             const response = await fetch(`https://test-server-6mxa.onrender.com/employer/profile/${user.userId}`, {
                 headers: {
                     Authorization: `Bearer ${authToken}`
                 }
-            });
-            const profileData = await response.json();
+            })
+            const profileData = await response.json()
             if (response.ok) {
-                setHasProfile(true);
-                setIsVerified(profileData.verified);
+                setHasProfile(true)
+                setIsVerified(profileData.verified)
+                setActiveComponent(profileData.verified ? 'jobseekerView' : 'employerProfileManagement')
             } else {
-                setHasProfile(false);
+                setHasProfile(false)
+                setActiveComponent('employerProfile')
             }
         } catch (error) {
-            console.error('Error checking employer profile:', error);
+            console.error('Error checking employer profile:', error)
         }
-    };
-
+    }
+    
     const fetchNotifications = async () => {
-        const authToken = getAuthToken();
+        const authToken = getAuthToken()
         try {
             const response = await fetch('https://test-server-6mxa.onrender.com/notifications', {
                 headers: {
@@ -76,40 +77,40 @@ function EmployerDashboard() {
                 }
             });
             if (response.ok) {
-                const data = await response.json();
-                setNotifications(data);
+                const data = await response.json()
+                setNotifications(data)
             }
         } catch (error) {
-            console.error('Error fetching notifications:', error);
+            console.error('Error fetching notifications:', error)
         }
-    };
+    }
 
     const handleAllNotificationsRead = () => {
-        setNotifications(notifications.map(n => ({ ...n, is_read: true })));
-    };
+        setNotifications(notifications.map(n => ({ ...n, is_read: true })))
+    }
 
-    const unreadNotificationsCount = notifications.filter(n => !n.is_read).length;
+    const unreadNotificationsCount = notifications.filter(n => !n.is_read).length
 
     const handleViewProfile = (jobseekerId) => {
         setSelectedJobseekerId(jobseekerId);
-        setActiveComponent('jobseekerProfile');
-    };
+        setActiveComponent('jobseekerProfile')
+    }
 
     const onProfileCreated = () => {
-        setHasProfile(true);
-        setActiveComponent('paymentVerification');
+        setHasProfile(true)
+        setActiveComponent('paymentVerification')
     };
 
     const onPaymentSuccess = (paymentDate) => {
-        setIsVerified(true);
-        setLastPaymentDate(paymentDate); // Set the last payment date
-        window.location.reload(); // Reload the page to update the state and UI
+        setIsVerified(true)
+        setLastPaymentDate(paymentDate)
+        window.location.reload()
     };
 
     const canAccessPaymentVerification = () => {
-        if (!isVerified) return true;
-        const today = new Date();
-        return today >= nextVerificationDate;
+        if (!isVerified) return true
+        const today = new Date()
+        return today >= nextVerificationDate
     };
 
     const handleNavClick = (component) => {
@@ -118,36 +119,36 @@ function EmployerDashboard() {
         } else if (component === 'paymentVerification' && !canAccessPaymentVerification()) {
             alert(`You have already paid the verification fee. Next verification available on ${nextVerificationDate.toLocaleDateString()}.`);
         } else {
-            setActiveComponent(component);
+            setActiveComponent(component)
         }
     };
 
     const renderComponent = () => {
         switch (activeComponent) {
             case 'employerProfile':
-                return <EmployerProfile onProfileCreated={() => setHasProfile(true)} />;
+                return <EmployerProfile onProfileCreated={() => setHasProfile(true)} />
             case 'employerProfileManagement':
-                return <EmployerProfileManagement />;
+                return <EmployerProfileManagement />
             case 'jobPosting':
-                return <JobPosting />;
+                return <JobPosting />
             case 'jobPostingManagement':
-                return <JobPostingManagement />;
+                return <JobPostingManagement />
             case 'accountSettings':
-                return <AccountSettings />;
+                return <AccountSettings />
             case 'paymentVerification':
                 if (canAccessPaymentVerification()) {
-                    return <PaymentVerification onPaymentSuccess={onPaymentSuccess} />;
+                    return <PaymentVerification onPaymentSuccess={onPaymentSuccess} />
                 }
-                return null;
+                return null
             case 'notifications':
-                return <Notifications />;
+                return <Notifications />
             case 'employerSearch':
-                return <EmployerSearch />;
+                return <EmployerSearch />
             case 'jobseekerView':
             default:
-                return <EmployerJobseekerView />;
+                return <EmployerJobseekerView />
         }
-    };
+    }
 
     return (
         <div className="employer-dashboard">
@@ -161,18 +162,27 @@ function EmployerDashboard() {
                 <nav className="employer-nav">
                     <ul>
                         <li onClick={() => handleNavClick('jobseekerView')}>Jobseeker Profiles</li>
-                        {!hasProfile ? (
+                        {!hasProfile && (
                             <li onClick={() => handleNavClick('employerProfile')}>Create Profile</li>
-                        ) : (
+                        )}
+                        {hasProfile && (
                             <>
                                 <li onClick={() => handleNavClick('employerProfileManagement')}>Manage Profile</li>
-                                <li onClick={() => handleNavClick('jobPosting')}>Create Job Posting</li>
-                                <li onClick={() => handleNavClick('jobPostingManagement')}>Manage Job Postings</li>
+                                {isVerified && (
+                                    <>
+                                        <li onClick={() => handleNavClick('jobPosting')}>Create Job Posting</li>
+                                        <li onClick={() => handleNavClick('jobPostingManagement')}>Manage Job Postings</li>
+                                    </>
+                                )}
                             </>
                         )}
                         <li onClick={() => handleNavClick('accountSettings')}>Account Settings</li>
-                        <li onClick={() => handleNavClick('paymentVerification')}>Payment Verification</li>
-                        <li onClick={() => handleNavClick('employerSearch')}>Search Jobseekers</li>
+                        {!isVerified && (
+                            <li onClick={() => handleNavClick('paymentVerification')}>Payment Verification</li>
+                        )}
+                        {isVerified && (
+                            <li onClick={() => handleNavClick('employerSearch')}>Search Jobseekers</li>
+                        )}
                     </ul>
                 </nav>
                 <div className="nav-right">
@@ -189,7 +199,7 @@ function EmployerDashboard() {
                 {renderComponent()}
             </main>
         </div>
-    );
+    )
 }
 
-export default EmployerDashboard;
+export default EmployerDashboard

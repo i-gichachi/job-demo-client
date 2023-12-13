@@ -6,23 +6,23 @@ function EmployerSearch({ onViewProfile }) {
         availability: '',
         job_category: '',
         salary_expectations: '',
-    });
-    const [jobseekers, setJobseekers] = useState([]);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [error, setError] = useState('');
+    })
+    const [jobseekers, setJobseekers] = useState([])
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [error, setError] = useState('')
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setSearchParams(prevParams => ({
             ...prevParams,
             [name]: value,
-        }));
-    };
+        }))
+    }
 
     const performSearch = async () => {
-        setError('');
+        setError('')
         try {
-            const authToken = localStorage.getItem('token'); // Replace 'authToken' with your actual token key
+            const authToken = localStorage.getItem('token')
             const queryString = new URLSearchParams(searchParams).toString();
             const response = await fetch(`https://test-server-6mxa.onrender.com/employer/search?${queryString}`, {
                 headers: {
@@ -30,20 +30,20 @@ function EmployerSearch({ onViewProfile }) {
                 }
             });
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error('Network response was not ok')
             }
-            const data = await response.json();
-            setJobseekers(data);
-            setIsModalOpen(true); // Open the modal if there are results
+            const data = await response.json()
+            setJobseekers(data)
+            setIsModalOpen(true)
         } catch (error) {
-            setError('Failed to fetch jobseekers. Please try again.');
-            console.error('Error:', error);
+            setError('Failed to fetch jobseekers. Please try again.')
+            console.error('Error:', error)
         }
-    };
+    }
 
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
-    };
+    }
 
     const renderModal = () => (
         <div className="modal-overlay" onClick={toggleModal}>
@@ -80,7 +80,7 @@ function EmployerSearch({ onViewProfile }) {
                 </table>
             </div>
         </div>
-    );
+    )
 
     return (
         <div className="employer-search-container">
@@ -148,7 +148,7 @@ function EmployerSearch({ onViewProfile }) {
             {error && <p>{error}</p>}
             {isModalOpen && renderModal()}
         </div>
-    );
+    )
 }
 
-export default EmployerSearch;
+export default EmployerSearch
