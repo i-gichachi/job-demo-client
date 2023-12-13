@@ -4,20 +4,20 @@ import { useUserContext } from './UserContext';
 import './AdminUserManagement.css'
 
 function AdminUserManagement() {
-    const [users, setUsers] = useState([]);
-    const [showAlert, setShowAlert] = useState(false);
-    const [alertMessage, setAlertMessage] = useState('');
-    const { user } = useUserContext();
+    const [users, setUsers] = useState([])
+    const [showAlert, setShowAlert] = useState(false)
+    const [alertMessage, setAlertMessage] = useState('')
+    const { user } = useUserContext()
 
     const getAuthToken = () => {
-        return localStorage.getItem('token'); // Replace 'authToken' with your actual token key
+        return localStorage.getItem('token')
     };
     
     useEffect(() => {
         if (user && user.userType === 'admin') {
-            fetchUsers();
+            fetchUsers()
         }
-    }, [user]);
+    }, [user])
 
     const fetchUsers = async () => {
         try {
@@ -28,20 +28,20 @@ function AdminUserManagement() {
                 }
             });
             if (response.ok) {
-                const data = await response.json();
-                setUsers(data.users || []);
+                const data = await response.json()
+                setUsers(data.users || [])
             } else {
-                console.error('Failed to fetch users');
+                console.error('Failed to fetch users')
             }
         } catch (error) {
-            console.error('Error fetching users:', error);
+            console.error('Error fetching users:', error)
         }
-    };
+    }
 
     const handleDeleteUser = async (userId) => {
         if (window.confirm('Are you sure you want to delete this user?')) {
             try {
-                const authToken = getAuthToken();
+                const authToken = getAuthToken()
                 const response = await fetch(`https://test-server-6mxa.onrender.com/admin/users/${userId}`, {
                     method: 'DELETE',
                     headers: {
@@ -54,17 +54,17 @@ function AdminUserManagement() {
                     setShowAlert(true);
                     fetchUsers();
                 } else {
-                    setAlertMessage('Failed to delete user. Please try again.');
-                    setShowAlert(true);
+                    setAlertMessage('Failed to delete user. Please try again.')
+                    setShowAlert(true)
                 }
             } catch (error) {
-                console.error('Error deleting user:', error);
+                console.error('Error deleting user:', error)
             }
         }
     };
 
     return (
-        <div>
+        <div className='admin-user-container'> 
             <h1>Admin User Management</h1>
             {showAlert && (
                 <div className="custom-alert">

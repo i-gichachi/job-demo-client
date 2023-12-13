@@ -12,7 +12,7 @@ const validationSchema = Yup.object().shape({
     gender: Yup.string().required('Gender is required'),
     address: Yup.string().required('Address is required'),
     phone_number: Yup.string().matches(/^[0-9]{9}$/, 'Phone number must be a valid Kenyan number').required('Phone number is required')
-});
+})
 
 function AccountSettings() {
     const [editMode, setEditMode] = useState(false)
@@ -25,12 +25,12 @@ function AccountSettings() {
         gender: '',
         address: '',
         phone_number: ''
-    });
+    })
 
     
     const getAuthToken = () => {
-        return localStorage.getItem('token'); 
-    };
+        return localStorage.getItem('token')
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -40,16 +40,16 @@ function AccountSettings() {
                     headers: {
                         Authorization: `Bearer ${authToken}`
                     }
-                });
-                const userData = await userResponse.json();
-                setUserData(userData);
+                })
+                const userData = await userResponse.json()
+                setUserData(userData)
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error('Error fetching data:', error)
             }
-        };
+        }
 
-        fetchData();
-    }, []);
+        fetchData()
+    }, [])
 
     const handleSubmit = async (values) => {
         try {
@@ -61,25 +61,24 @@ function AccountSettings() {
                     'Authorization': `Bearer ${authToken}`
                 },
                 body: JSON.stringify(values)
-            };
-            const response = await fetch('https://test-server-6mxa.onrender.com/user/update', requestOptions);
+            }
+            const response = await fetch('https://test-server-6mxa.onrender.com/user/update', requestOptions)
             if (response.ok) {
-                alert('You have Successfully Updated your information!');
-                setEditMode(false);
+                alert('You have Successfully Updated your information!')
+                setEditMode(false)
             } else {
-                const data = await response.json();
-                alert(data.message || 'Update failed. Please try again.');
+                const data = await response.json()
+                alert(data.message || 'Update failed. Please try again.')
             }
         } catch (error) {
             console.error('Error:', error);
-            alert('Update failed. Please try again.');
+            alert('Update failed. Please try again.')
         }
-    };
+    }
 
     const editModeToggle = () => {
         setEditMode(!editMode);
-    };
-
+    }
 
     return (
         <div className="account-settings-container"> 
@@ -183,7 +182,7 @@ function AccountSettings() {
                 )}
             </Formik>
         </div>
-    );
+    )
 }
 
 export default AccountSettings

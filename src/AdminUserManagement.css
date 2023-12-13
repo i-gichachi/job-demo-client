@@ -1,11 +1,22 @@
-/* AdminUserManagement.css */
+.admin-user-container {
+   background-color: #343a40; 
+   color: #fff; 
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+   padding: 20px;
+   min-height: 100vh;
+}
+    
+.admin-user-container h1 {
+   text-align: center;
+   color: #ffffff; 
+   margin-bottom: 2rem;
+}
+    
 .table-container {
-    margin: 1rem auto;
-    max-width: 960px;
-    background: #fff;
-    padding: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
+  background-color: #171c21; 
+  border-radius: 8px; 
+  overflow: hidden;
+  margin-bottom: 20px;
 }
 
 h1 {
@@ -45,40 +56,39 @@ table tbody tr:hover {
 }
 
 .custom-alert {
-    background-color: #155724; /* A dark green background, often associated with success messages */
-    color: #d4edda; /* A soft green for the text, for readability */
-    padding: 10px 20px; /* Reduced padding for a slimmer alert */
+    background-color: #155724; 
+    color: #d4edda; 
+    padding: 10px 20px; 
     margin-bottom: 1rem;
     border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* A subtle shadow for depth */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     display: flex;
-    justify-content: space-between; /* Space out the message and the close button */
+    justify-content: space-between;
     align-items: center;
     position: relative;
-    max-width: 30%; /* A percentage-based width to maintain responsiveness */
+    max-width: 30%; 
     margin-left: auto;
     margin-right: auto;
-  }
+}
   
-  .alert-content {
-    font-weight: bold; /* Make the message text bold */
-    font-size: 0.9rem; /* Adjust font size for a more refined appearance */
-  }
+.alert-content {
+    font-weight: bold; 
+    font-size: 0.9rem;
+}
   
-  .close-alert {
-    color: #d4edda; /* Same color as the text for consistency */
+.close-alert {
+    color: #d4edda; 
     background-color: transparent;
     border: none;
-    padding: 5px; /* Smaller padding for a tighter close button */
+    padding: 5px; 
     cursor: pointer;
     position: relative;
-    font-size: 1rem; /* Adjust the size as needed */
-  }
+    font-size: 1rem; 
+}
   
-  /* Hover effect for the close button */
-  .close-alert:hover {
+.close-alert:hover {
     opacity: 0.8;
-  }
+}
   
 button {
     padding: 0.5rem 1rem;
@@ -100,7 +110,6 @@ button.variant-danger:hover {
     transform: translateY(-2px);
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .table-container {
         padding: 0.5rem;

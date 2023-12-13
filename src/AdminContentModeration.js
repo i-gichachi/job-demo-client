@@ -3,17 +3,17 @@ import { Table, Button, Alert } from 'react-bootstrap';
 import './AdminContentModeration.css'
 
 function AdminContentModeration() {
-    const [postings, setPostings] = useState([]);
-    const [showAlert, setShowAlert] = useState(false);
-    const [alertMessage, setAlertMessage] = useState('');
+    const [postings, setPostings] = useState([])
+    const [showAlert, setShowAlert] = useState(false)
+    const [alertMessage, setAlertMessage] = useState('')
 
     const getAuthToken = () => {
         return localStorage.getItem('token')
-    };
+    }
         
     useEffect(() => {
         fetchPostings();
-    }, []);
+    }, [])
 
     const fetchPostings = async () => {
         try {
@@ -22,15 +22,15 @@ function AdminContentModeration() {
                 headers: {
                     Authorization: `Bearer ${authToken}`
                 }
-            });
+            })
             if (response.ok) {
-                const data = await response.json();
-                setPostings(data.postings || []);
+                const data = await response.json()
+                setPostings(data.postings || [])
             } else {
-                console.error('Failed to fetch postings');
+                console.error('Failed to fetch postings')
             }
         } catch (error) {
-            console.error('Error fetching postings:', error);
+            console.error('Error fetching postings:', error)
         }
     }
 
@@ -43,22 +43,22 @@ function AdminContentModeration() {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${authToken}`
                 }
-            });
+            })
             if (response.ok) {
-                setAlertMessage('Job posting deleted successfully.');
-                setShowAlert(true);
-                fetchPostings();
+                setAlertMessage('Job posting deleted successfully.')
+                setShowAlert(true)
+                fetchPostings()
             } else {
-                setAlertMessage('Failed to delete job posting. Please try again.');
-                setShowAlert(true);
+                setAlertMessage('Failed to delete job posting. Please try again.')
+                setShowAlert(true)
             }
         } catch (error) {
-            console.error('Error deleting job posting:', error);
+            console.error('Error deleting job posting:', error)
         }
     }
 
     return (
-        <div>
+        <div className='admin-content-moderation-container'>
             <h1>Admin Content Moderation</h1>
             {showAlert && (
             <div className="content-custom-alert">
@@ -93,7 +93,7 @@ function AdminContentModeration() {
             </Table>
             </div>
         </div>
-    );
+    )
 }
 
 export default AdminContentModeration

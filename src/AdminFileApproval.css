@@ -1,102 +1,98 @@
-/* AdminContentModeration.css */
-.admin-content-moderation-container {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #ffffff; /* White text for better readability on dark background */
-    background-color: #343a40; /* Dark background to match AccountSettings */
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    margin: 2rem auto; /* Centering the container */
-    max-width: 1000px; /* Adjust based on your layout's needs */
-  }
+.admin-file-container {
+  background-color: #343a40; 
+  color: #fff; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  padding: 20px;
+  min-height: 100vh;
+}
   
-  .admin-content-moderation-container h1 {
-    text-align: center;
-    color: #ffffff; /* White color for the title */
-    margin-bottom: 2rem;
-  }
+.admin-file-container h1 {
+  text-align: center;
+  color: #ffffff; 
+  margin-bottom: 2rem;
+}
   
-  .table-container {
-    overflow-x: auto; /* Ensures the table is scrollable on small screens */
-  }
+.table-container {
+  overflow-x: auto; 
+ }
   
-  .table {
-    width: 100%;
-    margin-bottom: 1rem;
-    background-color: #23272b; /* Slightly lighter dark background for table */
-  }
+.table {
+  background-color: #171c21; 
+  border-radius: 8px; 
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+  margin-bottom: 20px;
+}
   
-  .table th {
-    vertical-align: bottom;
-    border-bottom: 2px solid #495057;
-    color: #ffffff; /* White color for table headers */
+.table th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #495057;
+  color: #ffffff; 
+  padding: 1rem;
+}
+  
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #495057;
+  color: #ffffff;
+}
+  
+.table-hover tbody tr:hover {
+  background-color: #3d434a;
+}
+  
+.custom-alert {
+  background-color: #155724; 
+  color: #d4edda; 
+  padding: 10px 20px; 
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  position: relative;
+  max-width: 30%; 
+  margin-left: auto;
+  margin-right: auto;
+}
+  
+.alert-content {
+  font-weight: bold;
+  font-size: 0.9rem; 
+}
+  
+.close-alert {
+  color: #d4edda; 
+  background-color: transparent;
+  border: none;
+  padding: 5px; 
+  cursor: pointer;
+  position: relative;
+  font-size: 1rem; 
+}
+  
+.close-alert:hover {
+  opacity: 0.8;
+}
+  
+.btn-danger {
+  background-color: #dc3545; 
+  border-color: #dc3545;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+}
+  
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+  
+
+@media (max-width: 768px) {
+  .admin-content-moderation-container {
     padding: 1rem;
+    margin: 1rem;
   }
-  
-  .table td {
-    padding: 0.75rem;
-    vertical-align: top;
-    border-top: 1px solid #495057;
-    color: #ffffff; /* White color for table data */
-  }
-  
-  .table-hover tbody tr:hover {
-    background-color: #3d434a; /* A darker shade for hover effect */
-  }
-  
-  .custom-alert {
-    background-color: #155724; /* A dark green background, often associated with success messages */
-    color: #d4edda; /* A soft green for the text, for readability */
-    padding: 10px 20px; /* Reduced padding for a slimmer alert */
-    margin-bottom: 1rem;
-    border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* A subtle shadow for depth */
-    display: flex;
-    justify-content: space-between; /* Space out the message and the close button */
-    align-items: center;
-    position: relative;
-    max-width: 30%; /* A percentage-based width to maintain responsiveness */
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .alert-content {
-    font-weight: bold; /* Make the message text bold */
-    font-size: 0.9rem; /* Adjust font size for a more refined appearance */
-  }
-  
-  .close-alert {
-    color: #d4edda; /* Same color as the text for consistency */
-    background-color: transparent;
-    border: none;
-    padding: 5px; /* Smaller padding for a tighter close button */
-    cursor: pointer;
-    position: relative;
-    font-size: 1rem; /* Adjust the size as needed */
-  }
-  
-  /* Hover effect for the close button */
-  .close-alert:hover {
-    opacity: 0.8;
-  }
-  
-  .btn-danger {
-    background-color: #dc3545; /* Red background for delete buttons */
-    border-color: #dc3545;
-    padding: 0.375rem 0.75rem;
-    border-radius: 0.25rem;
-  }
-  
-  .btn-danger:hover {
-    background-color: #c82333;
-    border-color: #bd2130;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .admin-content-moderation-container {
-      padding: 1rem;
-      margin: 1rem;
-    }
-  }
-  
+}
