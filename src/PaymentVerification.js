@@ -38,10 +38,11 @@ function PaymentVerification() {
         }
 
         setIsProcessing(true);
+        const token = getAuthToken();
         const response = await fetch('https://test-server-6mxa.onrender.com/stk-push', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({ phone_number: phoneNumber, amount: 1 })
         });
