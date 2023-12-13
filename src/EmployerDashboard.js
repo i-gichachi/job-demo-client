@@ -20,13 +20,18 @@ function EmployerDashboard() {
     const { user } = useUserContext();
     const [isVerified, setIsVerified] = useState(false);
     const [notifications, setNotifications] = useState([]);
+    const [lastPaymentDate, setLastPaymentDate] = useState(null);
 
     useEffect(() => {
         if (user && user.userId) {
             checkEmployerProfile();
             fetchNotifications();
+            // Redirect to manage profile if they have a profile but not verified
+            if (hasProfile && !isVerified) {
+                setActiveComponent('employerProfileManagement');
+            }
         }
-    }, [user]);
+    }, [user, hasProfile, isVerified]);
 
     const getAuthToken = () => {
         return localStorage.getItem('token'); // Replace 'authToken' with your actual token key
@@ -85,14 +90,24 @@ function EmployerDashboard() {
         setActiveComponent('paymentVerification');
     };
 
-    const onPaymentSuccess = () => {
+    const onPaymentSuccess = (paymentDate) => {
         setIsVerified(true);
+        setLastPaymentDate(paymentDate); // Set the last payment date
         window.location.reload(); // Reload the page to update the state and UI
     };
 
+    const canAccessPaymentVerification = () => {
+        if (!lastPaymentDate) return true;
+        const thirtyDaysAgo = new Date();
+        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+        return new Date(lastPaymentDate) < thirtyDaysAgo;
+    };
+
     const handleNavClick = (component) => {
-        if (!isVerified && component !== 'employerProfile' && component !== 'paymentVerification') {
+        if (!isVerified && component !== 'employerProfile' && component !== 'paymentVerification' && component !== 'accountSettings') {
             alert('You need to pay the verification fee to access this section.');
+        } else if (component === 'paymentVerification' && !canAccessPaymentVerification()) {
+            alert('You have already paid the verification fee. Please wait for 30 days to verify again.');
         } else {
             setActiveComponent(component);
         }
@@ -127,7 +142,9 @@ function EmployerDashboard() {
             <header className="employer-navbar">
                 <div className="brand-container">
                     {user && user.userType === 'employer' && <FaUserTie className="brand-icon"/>}
-                    <span className="brand-name">{user ? `${user.username} ${isVerified ? <FaCheckCircle className="verified-icon"/> : ''}` : 'Loading...'}</span>
+                    <span className="brand-name">
+                    {user ? user.username : 'Loading...'} {isVerified && <FaCheckCircle className="verified-icon" />}
+                </span>
                 </div>
                 <nav className="employer-nav">
                     <ul>
