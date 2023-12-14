@@ -30,7 +30,7 @@ function JobPostingManagement() {
             if (user && user.userType === 'employer') {
                 try {
                     const authToken = getAuthToken();
-                    const response = await fetch(`https://test-server-6mxa.onrender.com/employer/${user.userId}/jobpostings`, {
+                    const response = await fetch(`https://job-seeking-57c5.onrender.com/employer/${user.userId}/jobpostings`, {
                         headers: {
                             Authorization: `Bearer ${authToken}`
                         }
@@ -56,7 +56,7 @@ function JobPostingManagement() {
         if (window.confirm('Are you sure you want to delete this job posting?')) {
             try {
                 const authToken = getAuthToken();
-                const response = await fetch(`https://test-server-6mxa.onrender.com/jobposting/delete/${jobpostingId}`, {
+                const response = await fetch(`https://job-seeking-57c5.onrender.com/jobposting/delete/${jobpostingId}`, {
                     method: 'DELETE',
                     headers: {
                         Authorization: `Bearer ${authToken}`
@@ -91,7 +91,7 @@ function JobPostingManagement() {
                 body: JSON.stringify(values)
             }
 
-            const response = await fetch(`https://test-server-6mxa.onrender.com/jobposting/update/${selectedJobPosting.id}`, requestOptions);
+            const response = await fetch(`https://job-seeking-57c5.onrender.com/jobposting/update/${selectedJobPosting.id}`, requestOptions);
             if (response.ok) {
                 alert('Job posting updated successfully')
                 setJobPostings(jobPostings.map(posting => (posting.id === selectedJobPosting.id ? values : posting)))

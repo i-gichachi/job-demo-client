@@ -23,7 +23,7 @@ function EmployerJobseekerView() {
     const fetchJobseekers = async () => {
         const authToken = getAuthToken()
         try {
-            const response = await fetch('https://test-server-6mxa.onrender.com/jobseekers/view', {
+            const response = await fetch('https://job-seeking-57c5.onrender.com/jobseekers/view', {
                 headers: {
                     Authorization: `Bearer ${authToken}`
                 }
@@ -48,7 +48,7 @@ function EmployerJobseekerView() {
         e.preventDefault();
         const authToken = getAuthToken();
         try {
-            const response = await fetch('https://test-server-6mxa.onrender.com/jobseeker/contact', {
+            const response = await fetch('https://job-seeking-57c5.onrender.com/jobseeker/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -36,7 +36,7 @@ function AccountSettings() {
         const fetchData = async () => {
             try {
                 const authToken = getAuthToken();
-                const userResponse = await fetch('https://test-server-6mxa.onrender.com/user/info', {
+                const userResponse = await fetch('https://job-seeking-57c5.onrender.com/user/info', {
                     headers: {
                         Authorization: `Bearer ${authToken}`
                     }
@@ -62,7 +62,7 @@ function AccountSettings() {
                 },
                 body: JSON.stringify(values)
             }
-            const response = await fetch('https://test-server-6mxa.onrender.com/user/update', requestOptions)
+            const response = await fetch('https://job-seeking-57c5.onrender.com/user/update', requestOptions)
             if (response.ok) {
                 alert('You have Successfully Updated your information!')
                 setEditMode(false)

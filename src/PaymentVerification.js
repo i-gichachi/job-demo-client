@@ -16,7 +16,7 @@ function PaymentVerification() {
     const checkVerificationStatus = async () => {
         if (user && user.userId) {
             const token = getAuthToken()
-            const response = await fetch(`https://test-server-6mxa.onrender.com/payment-status/${user.userId}`, {
+            const response = await fetch(`https://job-seeking-57c5.onrender.com/payment-status/${user.userId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}` 
                 }
@@ -39,7 +39,7 @@ function PaymentVerification() {
 
         setIsProcessing(true)
         const token = getAuthToken()
-        const response = await fetch('https://test-server-6mxa.onrender.com/stk-push', {
+        const response = await fetch('https://job-seeking-57c5.onrender.com/stk-push', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`, 

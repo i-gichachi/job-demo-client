@@ -8,7 +8,7 @@ function JobpostingDescription({ jobpostingId }) {
             try {
                 const authToken = localStorage.getItem('token')
 
-                const response = await fetch(`https://test-server-6mxa.onrender.com/jobposting/${jobpostingId}`, {
+                const response = await fetch(`https://job-seeking-57c5.onrender.com/jobposting/${jobpostingId}`, {
                     headers: {
                         Authorization: `Bearer ${authToken}`
                     }

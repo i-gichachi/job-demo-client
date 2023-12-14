@@ -23,7 +23,7 @@ function AdminDashboard() {
 
     const fetchNotifications = async () => {
         try {
-            const response = await fetch('https://test-server-6mxa.onrender.com/notifications', { method: 'GET' });
+            const response = await fetch('https://job-seeking-57c5.onrender.com/notifications', { method: 'GET' });
             if (response.ok) {
                 const data = await response.json();
                 setNotifications(data);

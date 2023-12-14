@@ -41,7 +41,7 @@ function EmployerDashboard() {
     const checkEmployerProfile = async () => {
         const authToken = getAuthToken()
         try {
-            const response = await fetch(`https://test-server-6mxa.onrender.com/employer/profile/${user.userId}`, {
+            const response = await fetch(`https://job-seeking-57c5.onrender.com/employer/profile/${user.userId}`, {
                 headers: {
                     Authorization: `Bearer ${authToken}`
                 }
@@ -62,7 +62,7 @@ function EmployerDashboard() {
     const fetchNotifications = async () => {
         const authToken = getAuthToken()
         try {
-            const response = await fetch('https://test-server-6mxa.onrender.com/notifications', {
+            const response = await fetch('https://job-seeking-57c5.onrender.com/notifications', {
                 headers: {
                     Authorization: `Bearer ${authToken}`
                 }

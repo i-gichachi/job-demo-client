@@ -25,7 +25,7 @@ function EmployerProfile(props) {
                 },
                 body: JSON.stringify(employerProfileData)
             }
-            const response = await fetch('https://test-server-6mxa.onrender.com/employer/profile', requestOptions)
+            const response = await fetch('https://job-seeking-57c5.onrender.com/employer/profile', requestOptions)
             if (response.ok) {
                 setIsSubmitted(true);
                 alert('Employer profile created successfully')

@@ -38,7 +38,7 @@ function JobseekerProfile(props) {
                 body: JSON.stringify(profileData)
             }
 
-            const response = await fetch('https://test-server-6mxa.onrender.com/jobseeker/profile', requestOptions)
+            const response = await fetch('https://job-seeking-57c5.onrender.com/jobseeker/profile', requestOptions)
             const data = await response.json()
 
             if (response.ok) {

@@ -22,7 +22,7 @@ const Login = () => {
         }),
         onSubmit: async (values) => {
             try {
-                const response = await fetch('https://test-server-6mxa.onrender.com/login', {
+                const response = await fetch('https://job-seeking-57c5.onrender.com/login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

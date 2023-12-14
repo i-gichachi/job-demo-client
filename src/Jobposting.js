@@ -38,7 +38,7 @@ function JobPosting() {
                 body: JSON.stringify(values)
             }
 
-            const response = await fetch('https://test-server-6mxa.onrender.com/jobposting/create', requestOptions)
+            const response = await fetch('https://job-seeking-57c5.onrender.com/jobposting/create', requestOptions)
             const data = await response.json()
 
             if (response.ok) {

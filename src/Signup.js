@@ -40,7 +40,7 @@ const Signup = () => {
             password: Yup.string().required('Password is required'),
             confirm_password: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match').required('Confirm Password is required'),
             first_name: Yup.string().required('First name is required'),
-            second_name: Yup.string(), // Validation for second name (optional field)
+            second_name: Yup.string(),
             surname: Yup.string().required('Surname is required'),
             phone_number: Yup.string().required('Phone number is required'),
             gender: Yup.string().required('Gender is required'),
@@ -52,7 +52,7 @@ const Signup = () => {
         onSubmit: (values, { setSubmitting, setFieldError }) => {
             console.log('Submitting form with values:', values)
 
-            fetch('https://test-server-6mxa.onrender.com/signup', {
+            fetch('https://job-seeking-57c5.onrender.com/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

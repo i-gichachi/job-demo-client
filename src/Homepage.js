@@ -11,7 +11,7 @@ function Homepage() {
     useEffect(() => {
         const fetchWelcomeData = async () => {
             try {
-                const response = await fetch('https://test-server-6mxa.onrender.com/');
+                const response = await fetch('https://job-seeking-57c5.onrender.com/');
                 if (response.ok && response.headers.get("Content-Type").includes("application/json")) {
                     const data = await response.json();
                     setWelcomeData({

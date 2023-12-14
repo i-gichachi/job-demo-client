@@ -12,7 +12,7 @@ export const UserProvider = ({ children }) => {
             try {
                 const token = localStorage.getItem('token')
                 if (token) {
-                    const response = await fetch('https://test-server-6mxa.onrender.com/check_user', {
+                    const response = await fetch('https://job-seeking-57c5.onrender.com/check_user', {
                         headers: {
                             'Authorization': `Bearer ${token}` 
                         }

@@ -19,7 +19,7 @@ function Notifications({ onAllRead }) {
     const fetchNotifications = async () => {
         try {
             const authToken = getAuthToken();
-            const response = await fetch('https://test-server-6mxa.onrender.com/notifications', {
+            const response = await fetch('https://job-seeking-57c5.onrender.com/notifications', {
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${authToken}`,
@@ -38,7 +38,7 @@ function Notifications({ onAllRead }) {
     const markAsRead = async (notificationId) => {
         try {
             const authToken = getAuthToken()
-            const response = await fetch(`https://test-server-6mxa.onrender.com/notifications/read/${notificationId}`, {
+            const response = await fetch(`https://job-seeking-57c5.onrender.com/notifications/read/${notificationId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

@@ -24,7 +24,7 @@ function EmployerSearch({ onViewProfile }) {
         try {
             const authToken = localStorage.getItem('token')
             const queryString = new URLSearchParams(searchParams).toString();
-            const response = await fetch(`https://test-server-6mxa.onrender.com/employer/search?${queryString}`, {
+            const response = await fetch(`https://job-seeking-57c5.onrender.com/employer/search?${queryString}`, {
                 headers: {
                     'Authorization': `Bearer ${authToken}`
                 }

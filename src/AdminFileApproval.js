@@ -18,7 +18,7 @@ function AdminFileApproval() {
     const fetchPendingJobseekers = async () => {
         try {
             const authToken = getAuthToken();
-            const response = await fetch('https://test-server-6mxa.onrender.com/admin/jobseekers', {
+            const response = await fetch('https://job-seeking-57c5.onrender.com/admin/jobseekers', {
                 headers: {
                     Authorization: `Bearer ${authToken}`
                 }
@@ -37,7 +37,7 @@ function AdminFileApproval() {
     const handleApproval = async (jobseekerId, status) => {
         try {
             const authToken = getAuthToken();
-            const response = await fetch(`https://test-server-6mxa.onrender.com/jobseeker/file-approval/${jobseekerId}`, {
+            const response = await fetch(`https://job-seeking-57c5.onrender.com/jobseeker/file-approval/${jobseekerId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

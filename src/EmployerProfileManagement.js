@@ -18,7 +18,7 @@ function EmployerProfileManagement() {
             if (user && user.userId) {
                 const authToken = localStorage.getItem('token')
                 try {
-                    const profileResponse = await fetch(`https://test-server-6mxa.onrender.com/employer/profile/${user.userId}`, {
+                    const profileResponse = await fetch(`https://job-seeking-57c5.onrender.com/employer/profile/${user.userId}`, {
                         headers: {
                             'Authorization': `Bearer ${authToken}`
                         }
@@ -51,7 +51,7 @@ function EmployerProfileManagement() {
             }
 
             if (user && user.userId) {
-                const response = await fetch(`https://test-server-6mxa.onrender.com/employer/profile/${user.userId}`, requestOptions)
+                const response = await fetch(`https://job-seeking-57c5.onrender.com/employer/profile/${user.userId}`, requestOptions)
                 if (response.ok) {
                     alert('Employer profile updated successfully');
                     setEditMode(false)

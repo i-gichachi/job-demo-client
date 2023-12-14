@@ -30,7 +30,7 @@ function SeekerProfileManagement() {
     useEffect(() => {
         if (user && user.userId) {
             const authToken = getAuthToken()
-            fetch(`https://test-server-6mxa.onrender.com/jobseeker/profile/${user.userId}`, {
+            fetch(`https://job-seeking-57c5.onrender.com/jobseeker/profile/${user.userId}`, {
                 headers: {
                     Authorization: `Bearer ${authToken}` 
                 }
@@ -63,7 +63,7 @@ function SeekerProfileManagement() {
             body: JSON.stringify(values)
         }
 
-        fetch(`https://test-server-6mxa.onrender.com/jobseeker/profile/update/${user.userId}`, requestOptions)
+        fetch(`https://job-seeking-57c5.onrender.com/jobseeker/profile/update/${user.userId}`, requestOptions)
         .then(response => response.json())
         .then(data => {
             if (data.message) {

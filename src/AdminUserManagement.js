@@ -22,7 +22,7 @@ function AdminUserManagement() {
     const fetchUsers = async () => {
         try {
             const authToken = getAuthToken();
-            const response = await fetch('https://test-server-6mxa.onrender.com/admin/users', {
+            const response = await fetch('https://job-seeking-57c5.onrender.com/admin/users', {
                 headers: {
                     Authorization: `Bearer ${authToken}`
                 }
@@ -42,7 +42,7 @@ function AdminUserManagement() {
         if (window.confirm('Are you sure you want to delete this user?')) {
             try {
                 const authToken = getAuthToken()
-                const response = await fetch(`https://test-server-6mxa.onrender.com/admin/users/${userId}`, {
+                const response = await fetch(`https://job-seeking-57c5.onrender.com/admin/users/${userId}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',

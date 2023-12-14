@@ -18,7 +18,7 @@ function AdminContentModeration() {
     const fetchPostings = async () => {
         try {
             const authToken = getAuthToken();
-            const response = await fetch('https://test-server-6mxa.onrender.com/admin/content', {
+            const response = await fetch('https://job-seeking-57c5.onrender.com/admin/content', {
                 headers: {
                     Authorization: `Bearer ${authToken}`
                 }
@@ -37,7 +37,7 @@ function AdminContentModeration() {
     const handleDeletePosting = async (postingId) => {
         try {
             const authToken = getAuthToken();
-            const response = await fetch(`https://test-server-6mxa.onrender.com/admin/content/${postingId}`, {
+            const response = await fetch(`https://job-seeking-57c5.onrender.com/admin/content/${postingId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

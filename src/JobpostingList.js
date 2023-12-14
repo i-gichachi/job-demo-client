@@ -11,7 +11,7 @@ function JobpostingListing() {
         const fetchJobPostings = async () => {
             try {
                 const authToken = localStorage.getItem('token')
-                const response = await fetch('https://test-server-6mxa.onrender.com/jobpostings', {
+                const response = await fetch('https://job-seeking-57c5.onrender.com/jobpostings', {
                     headers: {
                         Authorization: `Bearer ${authToken}`
                     }
