@@ -10,13 +10,13 @@ import { FaUser, FaBell, FaCheckCircle } from 'react-icons/fa';
 import './JobseekerDashboard.css'
 
 const getAuthToken = () => {
-    return localStorage.getItem('token'); // Replace 'token' with your actual token key
+    return localStorage.getItem('token')
 }
 
 function JobseekerDashboard() {
     const [hasProfile, setHasProfile] = useState(false)
     const [activeComponent, setActiveComponent] = useState('')
-    const [isVerified, setIsVerified] = useState(false);
+    const [isVerified, setIsVerified] = useState(false)
     const { user } = useUserContext()
     const [notifications, setNotifications] = useState([])
 
@@ -64,8 +64,8 @@ function JobseekerDashboard() {
             }
         };
 
-        checkJobseekerProfile();
-        fetchNotifications();
+        checkJobseekerProfile()
+        fetchNotifications()
     }, [user])
 
     const markNotificationAsRead = async (notificationId) => {
@@ -81,9 +81,9 @@ function JobseekerDashboard() {
                 fetchNotifications();
             }
         } catch (error) {
-            console.error('Error marking notification as read:', error);
+            console.error('Error marking notification as read:', error)
         }
-    };
+    }
 
     const handleAllNotificationsRead = () => {
         setNotifications(notifications.map(n => ({ ...n, is_read: true })))
@@ -144,7 +144,7 @@ function JobseekerDashboard() {
                 {renderComponent()}
             </main>
         </div>
-    );
+    )
 }
 
 export default JobseekerDashboard

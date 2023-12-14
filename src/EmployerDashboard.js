@@ -27,17 +27,9 @@ function EmployerDashboard() {
         let nextDate = new Date();
         nextDate.setDate(nextDate.getDate() + 30)
         setNextVerificationDate(nextDate)
-
+    
         if (user && user.userId) {
-            checkEmployerProfile().then(() => {
-                if (!hasProfile) {
-                    setActiveComponent('employerProfile')
-                } else if (hasProfile && !isVerified) {
-                    setActiveComponent('employerProfileManagement')
-                } else if (hasProfile && isVerified) {
-                    setActiveComponent('jobseekerView')
-                }
-            })
+            checkEmployerProfile();
         }
     }, [user])
 
@@ -58,7 +50,6 @@ function EmployerDashboard() {
             if (response.ok) {
                 setHasProfile(true)
                 setIsVerified(profileData.verified)
-                setActiveComponent(profileData.verified ? 'jobseekerView' : 'employerProfileManagement')
             } else {
                 setHasProfile(false)
                 setActiveComponent('employerProfile')
@@ -102,9 +93,12 @@ function EmployerDashboard() {
     };
 
     const onPaymentSuccess = (paymentDate) => {
-        setIsVerified(true)
-        setLastPaymentDate(paymentDate)
-        window.location.reload()
+        setIsVerified(true);
+        setLastPaymentDate(paymentDate);
+        
+        let nextDate = new Date(paymentDate);
+        nextDate.setDate(nextDate.getDate() + 30); // Set next verification date to 30 days after payment
+        setNextVerificationDate(nextDate);
     };
 
     const canAccessPaymentVerification = () => {
@@ -114,15 +108,23 @@ function EmployerDashboard() {
     };
 
     const handleNavClick = (component) => {
-        if (!isVerified && component !== 'employerProfile' && component !== 'accountSettings') {
-            alert('You need to pay the verification fee to access this section.');
+        if (!isVerified) {
+            if (!hasProfile && component !== 'employerProfile' && component !== 'accountSettings' && component !== 'paymentVerification') {
+                alert('Please create your profile first.');
+                return;
+            }
+            if (hasProfile && component !== 'employerProfileManagement' && component !== 'accountSettings' && component !== 'paymentVerification') {
+                alert('You need to pay the verification fee to access this section.');
+                return;
+            }
         } else if (component === 'paymentVerification' && !canAccessPaymentVerification()) {
             alert(`You have already paid the verification fee. Next verification available on ${nextVerificationDate.toLocaleDateString()}.`);
-        } else {
-            setActiveComponent(component)
+            return;
         }
+    
+        setActiveComponent(component);
     };
-
+    
     const renderComponent = () => {
         switch (activeComponent) {
             case 'employerProfile':
@@ -177,7 +179,7 @@ function EmployerDashboard() {
                             </>
                         )}
                         <li onClick={() => handleNavClick('accountSettings')}>Account Settings</li>
-                        {!isVerified && (
+                        {(!isVerified || (isVerified || canAccessPaymentVerification())) && (
                             <li onClick={() => handleNavClick('paymentVerification')}>Payment Verification</li>
                         )}
                         {isVerified && (

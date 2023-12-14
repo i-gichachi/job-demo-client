@@ -7,9 +7,9 @@ import { useUserContext } from './UserContext';
 import './Login.css'
 
 const Login = () => {
-    const [loginError, setLoginError] = useState('');
-    const navigate = useNavigate();
-    const { setUser } = useUserContext();
+    const [loginError, setLoginError] = useState('')
+    const navigate = useNavigate()
+    const { setUser } = useUserContext()
 
     const formik = useFormik({
         initialValues: {
@@ -32,44 +32,44 @@ const Login = () => {
                         password: values.password
                     })
                 });
-                const data = await response.json();
+                const data = await response.json()
 
                 if (response.ok) {
-                    localStorage.setItem('token', data.access_token); // Store JWT token
+                    localStorage.setItem('token', data.access_token)
 
                     setUser({ 
                         userType: data.user_type, 
                         username: data.username, 
                         userId: data.user_id 
-                    });
+                    })
 
-                    alert('You have successfully logged in!');
-                    redirectToDashboard(data.user_type);
+                    alert('You have successfully logged in!')
+                    redirectToDashboard(data.user_type)
                 } else {
-                    setLoginError(data.message);
+                    setLoginError(data.message)
                 }
             } catch (error) {
-                console.error('Error:', error);
-                setLoginError('Failed to login');
+                console.error('Error:', error)
+                setLoginError('Failed to login')
             }
         }
-    });
+    })
 
     const redirectToDashboard = (userType) => {
         switch (userType) {
             case 'admin':
-                navigate('/admin-dashboard');
+                navigate('/admin-dashboard')
                 break;
             case 'employer':
-                navigate('/employer-dashboard');
+                navigate('/employer-dashboard')
                 break;
             case 'jobseeker':
-                navigate('/jobseeker-dashboard');
+                navigate('/jobseeker-dashboard')
                 break;
             default:
-                setLoginError('Invalid user type');
+                setLoginError('Invalid user type')
         }
-    };
+    }
     
     return (
         <div className="login-page">
@@ -119,7 +119,7 @@ const Login = () => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Login;
+export default Login

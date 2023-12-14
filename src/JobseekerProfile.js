@@ -10,25 +10,25 @@ const JobseekerProfileSchema = Yup.object().shape({
     availability: Yup.string().required('Availability is required'),
     job_category: Yup.string().required('Job category is required'),
     salary_expectations: Yup.string().required('Salary expectations are required')
-});
+})
 
 const getAuthToken = () => {
-    return localStorage.getItem('token'); // Replace 'token' with your actual token key
-};
+    return localStorage.getItem('token')
+}
 
 function JobseekerProfile(props) {
-    const { user } = useUserContext();
+    const { user } = useUserContext()
 
     const handleSubmit = async (values, { setSubmitting, resetForm, setErrors }) => {
         console.log(user);
         if (user.userType !== 'jobseeker') {
-            alert('Unauthorized or invalid user type');
-            return;
+            alert('Unauthorized or invalid user type')
+            return
         }
 
         try {
             const authToken = getAuthToken();
-            const profileData = { ...values, user_id: user.userId };
+            const profileData = { ...values, user_id: user.userId }
             const requestOptions = {
                 method: 'POST',
                 headers: { 
@@ -36,26 +36,26 @@ function JobseekerProfile(props) {
                     Authorization: `Bearer ${authToken}`
                 },
                 body: JSON.stringify(profileData)
-            };
+            }
 
-            const response = await fetch('https://test-server-6mxa.onrender.com/jobseeker/profile', requestOptions);
-            const data = await response.json();
+            const response = await fetch('https://test-server-6mxa.onrender.com/jobseeker/profile', requestOptions)
+            const data = await response.json()
 
             if (response.ok) {
-                alert(data.message || 'Profile created successfully!');
-                resetForm();
-                props.onProfileCreated();
+                alert(data.message || 'Profile created successfully!')
+                resetForm()
+                props.onProfileCreated()
             } else {
-                alert(data.message || 'Error creating profile. Please try again.');
-                setErrors({ api: data.message });
+                alert(data.message || 'Error creating profile. Please try again.')
+                setErrors({ api: data.message })
             }
         } catch (error) {
-            console.error('Error:', error);
-            setErrors({ api: 'An error occurred. Please try again.' });
+            console.error('Error:', error)
+            setErrors({ api: 'An error occurred. Please try again.' })
         } finally {
-            setSubmitting(false);
+            setSubmitting(false)
         }
-    };
+    }
 
     return (
         <div className="jobseeker-profile-container">

@@ -1,43 +1,38 @@
-/* General page styling */
 body, html {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4; /* Light grey background */
+    background-color: #f4f4f4;
 }
 
-/* Notifications container styling */
-.notification-container {
+.notification {
     width: 100%;
-    max-width: 600px; /* Set the max width for the notification container */
-    margin: 20px auto; /* Center the container with automatic margins */
+    max-width: 600px;
+    margin: 20px auto;
     padding: 20px;
-    background-color: #fff; /* White background for the container */
-    border-radius: 8px; /* Rounded corners for the container */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Notification header */
-.notification-container h2 {
-    color: #333; /* Dark grey color */
-    text-align: center; /* Center the title */
-    margin-bottom: 20px; /* Space below the title */
+.notification h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-/* Notification message styles */
-.notification-message {
+.notification .notification-list .list-group-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    border-bottom: 1px solid #ddd; /* Separator between notifications */
+    border-bottom: 1px solid #ddd;
 }
 
-/* Button styles */
-.notification-button {
-    padding: 5px 10px; /* Padding inside the buttons */
-    margin-left: 10px; /* Space between message and button */
-    background-color: #007bff; /* Bootstrap primary color */
+.notification .notification-list .list-group-item .btn {
+    padding: 5px 10px;
+    margin-left: 10px;
+    background-color: #007bff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -45,30 +40,28 @@ body, html {
     font-size: 0.9em;
 }
 
-.notification-button:hover {
-    background-color: #0056b3; /* Darken the button on hover */
+.notification .notification-list .list-group-item .btn:hover {
+    background-color: #0056b3;
 }
 
-/* "Mark All as Read" button at the bottom */
-.mark-all-button {
-    display: block; /* Ensure it takes the full width */
+.notification .btn.mark-all-button {
+    display: block;
     width: 100%;
     padding: 10px;
-    background-color: #6c757d; /* Bootstrap secondary color */
+    background-color: #6c757d;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 10px; /* Space from the last notification */
+    margin-top: 10px;
 }
 
-.mark-all-button:hover {
-    background-color: #5a6268; /* Darken the button on hover */
+.notification .btn.mark-all-button:hover {
+    background-color: #5a6268;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
-    .notification-container {
-        width: 90%; /* More width on smaller screens */
+    .notification {
+        width: 90%;
     }
 }

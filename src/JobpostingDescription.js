@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from 'react';
 
 function JobpostingDescription({ jobpostingId }) {
-    const [jobPosting, setJobPosting] = useState(null);
+    const [jobPosting, setJobPosting] = useState(null)
 
     useEffect(() => {
         const fetchJobPosting = async () => {
             try {
-                const authToken = localStorage.getItem('token'); // Replace 'authToken' with your actual token key
+                const authToken = localStorage.getItem('token')
 
                 const response = await fetch(`https://test-server-6mxa.onrender.com/jobposting/${jobpostingId}`, {
                     headers: {
                         Authorization: `Bearer ${authToken}`
                     }
-                });
+                })
 
                 if (response.ok) {
-                    const data = await response.json();
+                    const data = await response.json()
                     setJobPosting(data);
                 } else {
-                    console.error('Job posting not found');
+                    console.error('Job posting not found')
                 }
             } catch (error) {
-                console.error('Error fetching job posting:', error);
+                console.error('Error fetching job posting:', error)
             }
-        };
+        }
 
         if (jobpostingId) {
-            fetchJobPosting();
+            fetchJobPosting()
         }
-    }, [jobpostingId]);
+    }, [jobpostingId])
 
     if (!jobPosting) {
         return <div>Loading...</div>;

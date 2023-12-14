@@ -7,11 +7,11 @@ function Logout() {
     const handleLogout = () => {
         const confirmation = window.confirm("Are you sure you want to log out?")
         if (confirmation) {
-            // Remove the token from local storage
-            localStorage.removeItem('token');
+    
+            localStorage.removeItem('token')
 
-            alert('You have successfully logged out.');
-            navigate('/');
+            alert('You have successfully logged out.')
+            navigate('/')
         }
     }
 
@@ -22,4 +22,4 @@ function Logout() {
     )
 }
 
-export default Logout;
+export default Logout

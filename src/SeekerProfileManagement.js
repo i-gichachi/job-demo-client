@@ -10,7 +10,7 @@ const JobseekerProfileSchema = Yup.object().shape({
     availability: Yup.string().required('Availability is required'),
     job_category: Yup.string().required('Job category is required'),
     salary_expectations: Yup.string().required('Salary expectations are required')
-});
+})
 
 function SeekerProfileManagement() {
     const [editMode, setEditMode] = useState(false);
@@ -20,20 +20,19 @@ function SeekerProfileManagement() {
         availability: '',
         job_category: '',
         salary_expectations: ''
-    });
-    const { user } = useUserContext();
+    })
+    const { user } = useUserContext()
 
-    // Function to get JWT token
     const getAuthToken = () => {
-        return localStorage.getItem('token'); // Replace 'token' with your actual token key
-    };
+        return localStorage.getItem('token')
+    }
 
     useEffect(() => {
         if (user && user.userId) {
-            const authToken = getAuthToken(); // Get JWT token
+            const authToken = getAuthToken()
             fetch(`https://test-server-6mxa.onrender.com/jobseeker/profile/${user.userId}`, {
                 headers: {
-                    Authorization: `Bearer ${authToken}` // Include JWT token in header
+                    Authorization: `Bearer ${authToken}` 
                 }
             })
             .then(response => response.json())
@@ -41,45 +40,45 @@ function SeekerProfileManagement() {
                 setProfileData(data);
             })
             .catch(error => {
-                console.error('Error fetching profile data:', error);
-            });
+                console.error('Error fetching profile data:', error)
+            })
         }
-    }, [user]);
+    }, [user])
 
     const handleSubmit = async (values) => {
         if (values.profile_status === 'Inactive') {
             const confirmInactive = window.confirm("Setting your profile to 'Inactive' will make it invisible to employers. Are you sure you want to continue?");
             if (!confirmInactive) {
-                return;
+                return
             }
         }
 
-        const authToken = getAuthToken(); // Get JWT token
+        const authToken = getAuthToken()
         const requestOptions = {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${authToken}` // Include JWT token in header
+                Authorization: `Bearer ${authToken}` 
             },
             body: JSON.stringify(values)
-        };
+        }
 
         fetch(`https://test-server-6mxa.onrender.com/jobseeker/profile/update/${user.userId}`, requestOptions)
         .then(response => response.json())
         .then(data => {
             if (data.message) {
-                alert(data.message);
+                alert(data.message)
             }
-            setEditMode(false);
+            setEditMode(false)
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Update failed. Please try again.');
-        });
+            alert('Update failed. Please try again.')
+        })
     }
 
     const editModeToggle = () => {
-        setEditMode(!editMode);
+        setEditMode(!editMode)
     }
 
     return (
@@ -149,7 +148,7 @@ function SeekerProfileManagement() {
                 )}
             </Formik>
         </div>
-    );
+    )
 }
 
-export default SeekerProfileManagement;
+export default SeekerProfileManagement

@@ -4,6 +4,7 @@
     justify-content: space-around;
     gap: 20px;
     padding: 20px;
+    background: #343a40; 
 }
 
 .job-posting-title {
@@ -11,49 +12,46 @@
     text-align: center;
     color: #333;
     font-size: 2rem;
-    margin-top: 20px; /* Adjust this value to ensure it's below the navbar */
+    margin-top: 20px; 
 }
 
-/* Each card is a flex item */
 .company-card, .job-posting-card {
-    border: 2px solid #ddd; /* Visible border */
-    border-radius: 8px; /* Rounded corners */
-    width: calc(33.333% - 20px); /* 3 items per row, minus gap */
+    border: 2px solid #ddd; 
+    border-radius: 8px; 
+    width: calc(33.333% - 20px); 
     box-sizing: border-box;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center items horizontally */
-    justify-content: center; /* Center items vertically */
+    align-items: center; 
+    justify-content: center;
     transition: box-shadow 0.3s ease-in-out;
+    background: #171c21; 
 }
 
-/* Hover effect for the cards */
 .company-card:hover, .job-posting-card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 
-/* Image styling */
 .company-card img, .job-posting-card img {
-    border-radius: 50%; /* Circle image */
-    width: 100px; /* Set a fixed width */
-    height: 100px; /* Set a fixed height */
-    object-fit: cover; /* Cover the area without stretching */
+    border-radius: 50%; 
+    width: 100px; 
+    height: 100px; 
+    object-fit: cover; 
     margin-bottom: 10px;
+    background: #171c21; 
 }
 
-/* Button styling */
 button {
-    background-color: #28a745; /* Button color */
+    background-color: #28a745; 
     color: white;
     border: none;
     border-radius: 4px;
     padding: 10px 20px;
     cursor: pointer;
-    margin-top: 15px; /* Space from the last text to button */
+    margin-top: 15px;
 }
 
-/* Adjust button hover effect */
 button:hover {
     background-color: #218838;
 }
@@ -82,16 +80,15 @@ button:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive adjustments */
 @media (max-width: 1024px) {
     .company-card, .job-posting-card {
-        width: calc(50% - 20px); /* 2 items per row on medium screens */
+        width: calc(50% - 20px); 
     }
 }
 
 @media (max-width: 768px) {
     .company-card, .job-posting-card {
-        width: 100%; /* 1 item per row on small screens */
+        width: 100%; 
         margin-bottom: 20px;
     }
 

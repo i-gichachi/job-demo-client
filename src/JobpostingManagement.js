@@ -13,17 +13,17 @@ const jobPostingSchema = Yup.object().shape({
     salary_range: Yup.string().required('Salary range is required'),
     qualifications: Yup.string().required('Qualifications are required'),
     job_type: Yup.string().required('Job Type is required'),
-});
+})
 
 const getAuthToken = () => {
-    return localStorage.getItem('token'); // Replace 'token' with your actual token key
+    return localStorage.getItem('token')
 }
 
 function JobPostingManagement() {
-    const [jobPostings, setJobPostings] = useState([]);
-    const [selectedJobPosting, setSelectedJobPosting] = useState(null);
-    const [showModal, setShowModal] = useState(false);
-    const { user } = useUserContext();
+    const [jobPostings, setJobPostings] = useState([])
+    const [selectedJobPosting, setSelectedJobPosting] = useState(null)
+    const [showModal, setShowModal] = useState(false)
+    const { user } = useUserContext()
 
     useEffect(() => {
         const fetchJobPostings = async () => {
@@ -36,21 +36,21 @@ function JobPostingManagement() {
                         }
                     });
                     if (response.ok) {
-                        const data = await response.json();
-                        setJobPostings(data.postings);
+                        const data = await response.json()
+                        setJobPostings(data.postings)
                     }
                 } catch (error) {
-                    console.error('Error:', error);
+                    console.error('Error:', error)
                 }
             }
         };
-        fetchJobPostings();
-    }, [user]);
+        fetchJobPostings()
+    }, [user])
 
     const handleUpdate = (posting) => {
-        setSelectedJobPosting(posting);
-        setShowModal(true);
-    };
+        setSelectedJobPosting(posting)
+        setShowModal(true)
+    }
 
     const handleDelete = async (jobpostingId) => {
         if (window.confirm('Are you sure you want to delete this job posting?')) {
@@ -72,12 +72,12 @@ function JobPostingManagement() {
                 console.error('Error:', error);
             }
         }
-    };
+    }
 
     const handleModalClose = () => {
         setShowModal(false);
         setSelectedJobPosting(null);
-    };
+    }
 
     const handleUpdateSubmit = async (values, actions) => {
         try {
@@ -89,24 +89,24 @@ function JobPostingManagement() {
                     Authorization: `Bearer ${authToken}`
                 },
                 body: JSON.stringify(values)
-            };
+            }
 
             const response = await fetch(`https://test-server-6mxa.onrender.com/jobposting/update/${selectedJobPosting.id}`, requestOptions);
             if (response.ok) {
-                alert('Job posting updated successfully');
-                setJobPostings(jobPostings.map(posting => (posting.id === selectedJobPosting.id ? values : posting)));
-                handleModalClose();
+                alert('Job posting updated successfully')
+                setJobPostings(jobPostings.map(posting => (posting.id === selectedJobPosting.id ? values : posting)))
+                handleModalClose()
             } else {
-                alert('Failed to update job posting');
+                alert('Failed to update job posting')
             }
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Error:', error)
         }
-        actions.setSubmitting(false);
-    };
+        actions.setSubmitting(false)
+    }
 
     const renderUpdateModal = (selectedJobPosting) => {
-        if (!selectedJobPosting) return null; // Render nothing if no posting is selected
+        if (!selectedJobPosting) return null
     
         return (
             <div className="overlay">
@@ -183,8 +183,8 @@ function JobPostingManagement() {
                     </Formik>
                 </div>
             </div>
-        );
-    };
+        )
+    }
     
     return (
         <div className="job-posting-management">
@@ -215,7 +215,7 @@ function JobPostingManagement() {
 
             {renderUpdateModal()}
         </div>
-    );
+    )
 }
 
 export default JobPostingManagement

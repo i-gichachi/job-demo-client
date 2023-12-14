@@ -17,6 +17,7 @@
 .brand-container {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .brand-icon {
@@ -25,19 +26,21 @@
 }
 
 .brand-name {
-    font-size: 1.75rem; 
-    font-weight: 600; 
+    font-size: 1.5rem; 
+    font-weight: 400;
+    position: relative; 
+    padding-top: 30px; 
 }
 
 .verified-icon {
     position: relative; 
-    top: 50%; 
-    right: 10px; 
-    transform: translateY(-50%); 
+    top: -50px; 
+    right: 20px; 
     font-size: 1.25rem;
     color: #2ecc71; 
     z-index: 1; 
 }
+
 .employer-nav ul {
     list-style: none;
     display: flex;

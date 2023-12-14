@@ -1,5 +1,3 @@
-/* JobpostingManagement.css */
-
 .job-posting-management {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
@@ -47,48 +45,48 @@ tbody tr:hover {
 }
 
 .form-group {
-    display: flex; /* Establish a flex container */
-    align-items: center; /* Align items vertically */
-    margin-bottom: 1rem; /* Space below each form group */
-  }
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 1rem;
+}
   
-  .label {
-    width: 20%; /* Assign a fixed width for labels */
-    min-width: 120px; /* Ensure that the label has a minimum width */
-    margin-right: 1rem; /* Space between the label and the input */
-    text-align: right; /* Right-align the text of the label */
-  }
+.label {
+    width: 20%; 
+    min-width: 120px; 
+    margin-right: 1rem; 
+    text-align: right;
+}
   
-  .input, .textarea, .select {
-    flex: 1; /* Take up the remaining space */
+.input, .textarea, .select {
+    flex: 1; 
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin-bottom: 0; /* Align inputs without space below them */
+    margin-bottom: 0; 
     font-size: 16px;
-  }
+}
 
 .form-group textarea[name="description"] {
-    height: 150px; /* Height for the textarea */
-    padding: 1rem; /* Padding can be the same or adjusted as needed */
+    height: 150px; 
+    padding: 1rem; 
     width: 90%;
 }
 
 .form-group textarea[name="responsibilities"] {
-    height: 150px; /* Height for the textarea */
-    padding: 1rem; /* Padding can be the same or adjusted as needed */
+    height: 150px; 
+    padding: 1rem;
     width: 90%;
 }
 
 .form-group textarea[name="qualifications"] {
-    height: 150px; /* Height for the textarea */
-    padding: 1rem; /* Padding can be the same or adjusted as needed */
+    height: 150px; 
+    padding: 1rem; 
     width: 90%;
 }
 
 .form-group textarea[name="instructions"] {
-    height: 150px; /* Height for the textarea */
-    padding: 1rem; /* Padding can be the same or adjusted as needed */
+    height: 150px; 
+    padding: 1rem; 
     width: 90%;
 }
 
@@ -121,24 +119,24 @@ tbody tr:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7); /* Dark overlay for contrast */
-  z-index: 1000; /* Ensure it's on top of other elements */
+  background-color: rgba(0, 0, 0, 0.7); 
+  z-index: 1000; 
   display: flex;
-  align-items: center; /* Center the modal vertically */
-  justify-content: center; /* Center the modal horizontally */
-  overflow: auto; /* Enable scrolling on the overlay if needed */
+  align-items: center; 
+  justify-content: center; 
+  overflow: auto; 
 }
 
 .modal-content {
-  position: relative; /* Allows for absolute positioning of children like the close button */
+  position: relative; 
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  width: 50%; /* Adjust width as needed */
-  max-height: 80vh; /* Adjust max height as needed */
-  overflow-y: auto; /* Enable scrolling within the modal */
-  z-index: 1001; /* Above the overlay */
+  width: 50%; 
+  max-height: 80vh; 
+  overflow-y: auto;
+  z-index: 1001;
 }
 
 .close {
@@ -155,7 +153,6 @@ tbody tr:hover {
   color: #000;
 }
 
-/* Improve the appearance of the form within the modal */
 .form-group {
   margin-bottom: 15px;
 }
@@ -169,7 +166,7 @@ tbody tr:hover {
 }
 
 .input, .textarea, .select {
-  width: calc(100% - 20px); /* Accounting for padding */
+  width: calc(100% - 20px); 
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
@@ -204,30 +201,29 @@ tbody tr:hover {
   background-color: #c82333;
 }
 
-/* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
   .modal-content {
-      width: 90%; /* More screen width on smaller devices */
-      max-height: 90vh; /* More height to accommodate virtual keyboards */
-      padding: 10px; /* Less padding on smaller screens */
+      width: 90%; 
+      max-height: 90vh; 
+      padding: 10px;
   }
 
   .close {
-      font-size: 20px; /* Smaller close button on smaller screens */
+      font-size: 20px;
       top: 5px;
       right: 10px;
   }
 
   .label {
-      font-size: 16px; /* Smaller font size for labels on smaller screens */
+      font-size: 16px;
   }
 
   .input, .textarea, .select {
-      font-size: 14px; /* Smaller font size for inputs on smaller screens */
+      font-size: 14px;
   }
 
   .button {
       padding: 10px 20px;
-      font-size: 14px; /* Smaller buttons on smaller screens */
+      font-size: 14px;
   }
 }

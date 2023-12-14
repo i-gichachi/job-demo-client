@@ -3,14 +3,14 @@ import JobpostingDescription from './JobpostingDescription';
 import './JobpostingList.css'
 
 function JobpostingListing() {
-    const [jobPostings, setJobPostings] = useState([]);
-    const [selectedCompany, setSelectedCompany] = useState(null);
-    const [selectedJobPosting, setSelectedJobPosting] = useState(null);
+    const [jobPostings, setJobPostings] = useState([])
+    const [selectedCompany, setSelectedCompany] = useState(null)
+    const [selectedJobPosting, setSelectedJobPosting] = useState(null)
 
     useEffect(() => {
         const fetchJobPostings = async () => {
             try {
-                const authToken = localStorage.getItem('token'); // Replace 'authToken' with your actual token key
+                const authToken = localStorage.getItem('token')
                 const response = await fetch('https://test-server-6mxa.onrender.com/jobpostings', {
                     headers: {
                         Authorization: `Bearer ${authToken}`
@@ -18,20 +18,20 @@ function JobpostingListing() {
                 });
 
                 if (response.ok) {
-                    const data = await response.json();
-                    console.log('Job Postings:', data.postings);
-                    setJobPostings(data.postings);
+                    const data = await response.json()
+                    console.log('Job Postings:', data.postings)
+                    setJobPostings(data.postings)
                 } else {
-                    setJobPostings([]);
-                    console.error('No job postings available at the moment. Please try again later.');
+                    setJobPostings([])
+                    console.error('No job postings available at the moment. Please try again later.')
                 }
             } catch (error) {
-                console.error('Error fetching job postings:', error);
+                console.error('Error fetching job postings:', error)
             }
-        };
+        }
 
-        fetchJobPostings();
-    }, []);
+        fetchJobPostings()
+    }, [])
 
     if (jobPostings.length === 0) {
         return <p>No Jobpostings available at the moment! Please try again after sometime!</p>
@@ -40,12 +40,12 @@ function JobpostingListing() {
     const groupByEmployers = (postings) => {
         return postings.reduce((acc, posting) => {
             if (!posting.employer || !posting.employer.id) {
-                console.warn(`Missing employer data for posting: ${posting.id}`);
-                return acc; // Skip this posting if employer data is missing
+                console.warn(`Missing employer data for posting: ${posting.id}`)
+                return acc
             }
-            (acc[posting.employer.id] = acc[posting.employer.id] || []).push(posting);
-            return acc;
-        }, {});
+            (acc[posting.employer.id] = acc[posting.employer.id] || []).push(posting)
+            return acc
+        }, {})
     }
     
     const handleViewJobs = (employerId) => {

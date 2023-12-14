@@ -50,7 +50,7 @@ const Signup = () => {
         }),
 
         onSubmit: (values, { setSubmitting, setFieldError }) => {
-            console.log('Submitting form with values:', values);
+            console.log('Submitting form with values:', values)
 
             fetch('https://test-server-6mxa.onrender.com/signup', {
                 method: 'POST',

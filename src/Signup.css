@@ -8,7 +8,6 @@ body, html {
     background-color: #f4f4f4;
 }
 
-/* Navbar Styles */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -30,7 +29,6 @@ body, html {
     color: #ddd;
 }
 
-/* Signup Page Container */
 .signup {
     display: flex;
     flex-direction: column;
@@ -38,7 +36,6 @@ body, html {
     height: 100vh;
 }
 
-/* Signup Form Container */
 .signup-container {
     display: flex;
     flex-direction: column;
@@ -50,7 +47,6 @@ body, html {
     margin: 0 auto;
 }
 
-/* Signup Form Styles */
 .signup-form {
     background-color: #555;
     border-radius: 8px;
@@ -60,7 +56,6 @@ body, html {
     width: 80%;
 }
 
-/* Signup Title Styles */
 .signup-title {
     color: #333;
     font-size: 2.2rem;
@@ -68,7 +63,6 @@ body, html {
     font-weight: 600;
 }
 
-/* Form Field Styles */
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -83,12 +77,10 @@ select {
     font-size: 1em;
 }
 
-/* Checkbox and Label Styles */
 input[type="checkbox"] {
     margin-right: 0.5em;
 }
 
-/* Button Styles */
 button {
     width: 100%;
     padding: 12px;
@@ -104,17 +96,15 @@ button {
 
 button:hover {
     background-color: #4cae4c;
-    transform: translateY(-2px); /* Slight lift */
+    transform: translateY(-2px);
 }
 
-/* Error Message Styles */
 .error {
     color: #d9534f;
     font-size: 0.85em;
     margin-bottom: 0.5em;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .signup-form {
         width: 95%;
